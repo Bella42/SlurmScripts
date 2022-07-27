@@ -54,9 +54,9 @@ JobID       Nodes       Final Run?      Script
 **551455**      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark.slurm 
 -------------------------------------------------------------------------------------------------------------------------
 <!-- 551461      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (iterator) -->
-551462      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm
-551463      ant18                      sbatch -p parcio -w ant18 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm
-551464      ant17                      sbatch -p parcio -w ant17 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm (db all)
+<!-- 551462      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm -->
+<!-- 551463      ant18                      sbatch -p parcio -w ant18 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm -->
+<!-- 551464      ant17                      sbatch -p parcio -w ant17 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm (db all) -->
 <!-- 551465      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
 <!-- 551468      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
 
@@ -64,6 +64,8 @@ JobID       Nodes       Final Run?      Script
 
 551496          ant11                   sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm
 551497          ant17                   sbatch -p parcio -w ant17 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm 
+551498          ant10                   sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
+551499          ant16                   sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
 
 
 ## Configs & Notes

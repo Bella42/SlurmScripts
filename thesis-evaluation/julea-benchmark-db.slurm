@@ -8,8 +8,8 @@
 runtimeDB="1 10 60"
 iterations=10
 
-dbClient="mysql"
-# dbClient="sqlite mysql"
+# dbClient="mysql"
+dbClient="sqlite mysql"
 
 # ---------------- Cluster Setup ----------------------------------------
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
@@ -38,25 +38,31 @@ do
         --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
         --object-backend=posix --object-component=server --object-path="/tmp/julea-${SLURM_JOBID}/posix" \
         --kv-backend=leveldb --kv-component=server --kv-path="/tmp/julea-${SLURM_JOBID}/leveldb" \
-        --db-backend=${server} --db-component=server --db-path=":memory:"
+        --db-backend=${server} --db-component=server --db-path=":memory:" --name="$(hostname)-db-sqlite-${SLURM_JOBID}"
             
         echo " julea-config --user \
         --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
         --object-backend=posix --object-component=server --object-path="/tmp/julea-${SLURM_JOBID}/posix" \
         --kv-backend=leveldb --kv-component=server --kv-path="/tmp/julea-${SLURM_JOBID}/leveldb" \
-        --db-backend=${server} --db-component=server --db-path=":memory:""
+        --db-backend=${server} --db-component=server --db-path=":memory:" --name="$(hostname)-db-sqlite-${SLURM_JOBID}""
+
+        export JULEA_CONFIG="~/.config/julea/$(hostname)-db-sqlite-${SLURM_JOBID}"
+        echo "Exported JULEA config: ~/.config/julea/$(hostname)-db-sqlite-${SLURM_JOBID}"
     else
          julea-config --user \
         --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
         --object-backend=posix --object-component=server --object-path="/tmp/julea-${SLURM_JOBID}/posix" \
         --kv-backend=leveldb --kv-component=server --kv-path="/tmp/julea-${SLURM_JOBID}/leveldb" \
-        --db-backend=${server} --db-component=client --db-path="$(hostname):julea_db:julea_user:julea_pw"
+        --db-backend=${server} --db-component=client --db-path="$(hostname):julea_db:julea_user:julea_pw" --name="$(hostname)-db-mysql-${SLURM_JOBID}"
 
         echo "julea-config --user \
         --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
         --object-backend=posix --object-component=server --object-path="/tmp/julea-${SLURM_JOBID}/posix" \
         --kv-backend=leveldb --kv-component=server --kv-path="/tmp/julea-${SLURM_JOBID}/leveldb" \
-        --db-backend=${server} --db-component=client --db-path="$(hostname):julea_db:julea_user:julea_pw""
+        --db-backend=${server} --db-component=client --db-path="$(hostname):julea_db:julea_user:julea_pw" --name="$(hostname)-db-mysql-${SLURM_JOBID}""
+
+        export JULEA_CONFIG="~/.config/julea/$(hostname)-db-mysql-${SLURM_JOBID}"
+        echo "Exported JULEA config: ~/.config/julea/$(hostname)-db-mysql-${SLURM_JOBID}"
     fi
     
         
