@@ -13,30 +13,34 @@
 <!-- - SQLite: 551464        (ant17) -->
 <!-- - MariaDB: 551464       (ant17)    (MySQL in file name) -->
 
-### KV & Message & OS
+### KV 
 
-#### Large Nodes    
-<!-- (551462) - ant10 -->
-- LMDB
+#### Large Nodes: ant10  551498
+- LMDB   
 - LevelDB
 - RocksDB
 - SQLite
 - SQLite Memory
 
-- POSIX lokal 551496
-- POSIX Ceph 551496
-
-#### Small Nodes 
-<!-- (551463)   - ant18 -->
+#### Small Node: ant16 551499
 - LMDB
 - LevelDB
 - SQLite
 - SQLite Memory
 - RocksDB
 
+### OS
 
-- POSIX lokal 551497
-- POSIX Ceph 551497
+#### Large Node: ant11 551496
+- POSIX lokal
+- POSIX Ceph
+
+#### Small Node: ant17 551497
+- POSIX lokal
+- POSIX Ceph
+
+### MISC
+Message called in KV Benchmark
 
 
 
@@ -45,31 +49,33 @@
 JobID       Nodes       Final Run?      Script
 -----------------------------------------------------------------------------------------------------
 
-<!-- 551444      ant11       ?              srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh        -->
-<!-- 551449      ant11                      srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh -->
-<!-- 551451      ant19                      srun -p parcio -N 1 -w ant19 slurm-scripts/julea-benchmark.sh -->
-<!-- 551452      ant11                      srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh -->
-<!-- 551453      ant11                      sbatch -p parcio -w ant11 -N 1 thesis_eval/slurm-scripts/julea-benchmark.slurm  -->
+## 551499          ant16   Yes?        sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
+## 551498          ant10   Yes?        sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
 
-**551455**      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark.slurm 
+## 551497          ant17   Yes?        sbatch -p parcio -w ant17 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm 
+## 551496          ant11   Yes?        sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm
+
+#### **551474**      ant11   **Yes**     sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (only mariadb)
+#### **551455**      ant10   **Yes**     sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark.slurm 
 -------------------------------------------------------------------------------------------------------------------------
-<!-- 551461      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (iterator) -->
-<!-- 551462      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm -->
-<!-- 551463      ant18                      sbatch -p parcio -w ant18 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm -->
-<!-- 551464      ant17                      sbatch -p parcio -w ant17 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm (db all) -->
-<!-- 551465      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
+
 <!-- 551468      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
+<!-- 551465      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
+<!-- 551464      ant17                sbatch -p parcio -w ant17 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm (db all) -->
+<!-- 551463      ant18                sbatch -p parcio -w ant18 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm -->
+<!-- 551462      ant10                sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm -->
+<!-- 551461      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (iterator) -->
 
-**551474**      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb)
+<!-- 551453      ant11                sbatch -p parcio -w ant11 -N 1 thesis_eval/slurm-scripts/julea-benchmark.slurm  -->
+<!-- 551452      ant11                srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh -->
+<!-- 551451      ant19                srun -p parcio -N 1 -w ant19 slurm-scripts/julea-benchmark.sh -->
+<!-- 551449      ant11                srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh -->
+<!-- 551444      ant11       ?        srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh        -->
 
-551496          ant11                   sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm
-551497          ant17                   sbatch -p parcio -w ant17 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm 
-551498          ant10                   sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
-551499          ant16                   sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
 
+### Configs & Notes
 
-## Configs & Notes
-
+--------------------------------------------------------
 <!-- 551461: db iterator run on large node -->
 **551462**: kv + rest on large node
 -> lmdb -> erste 10 iterationen ok
@@ -79,14 +85,11 @@ JobID       Nodes       Final Run?      Script
 -> no sqlite
 -> no sqlite memory
 
-
 **551458**: 
 -> os: local -> erste 10 iterationen ok
 
-
 551463: kv + rest on small node
 551461: db all run on small node
-
 
 --------------------------------------------------------
 - 551444: runtime="1 10" runtimeDB="1 10 60" iterations=10 kvServer="lmdb leveldb rocksdb sqlite sqlite-memory" dbClient="sqlite mariadb" osServer="posix-local posix-ceph"
@@ -106,8 +109,6 @@ Debugging DB benchmark
 
 sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm 
 Submitted batch job 551468
-
-
 
  JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 551458    parcio julea-be    kduwe  R      20:53      1 ant10
