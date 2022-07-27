@@ -18,9 +18,9 @@
 #### Large Nodes    (551462) - ant10
 - LMDB
 - LevelDB
+- RocksDB
 - SQLite
 - SQLite Memory
-- RocksDB
 
 - POSIX lokal
 - POSIX Ceph
@@ -47,7 +47,7 @@ JobID       Nodes       Final Run?      Script
 <!-- 551451      ant19                      srun -p parcio -N 1 -w ant19 slurm-scripts/julea-benchmark.sh -->
 <!-- 551452      ant11                      srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh -->
 <!-- 551453      ant11                      sbatch -p parcio -w ant11 -N 1 thesis_eval/slurm-scripts/julea-benchmark.slurm  -->
-551455      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark.slurm 
+**551455**      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark.slurm 
 -------------------------------------------------------------------------------------------------------------------------
 <!-- 551461      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (iterator) -->
 551462      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm
@@ -56,14 +56,26 @@ JobID       Nodes       Final Run?      Script
 551464      ant17                      sbatch -p parcio -w ant17 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm (db all)
 
 <!-- 551465      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
-551468      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb)
-551474      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb)
+<!-- 551468      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
+**551474**      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb)
 
 
 ## Configs & Notes
 
-551461: db iterator run on large node
-551462: kv + rest on large node
+<!-- 551461: db iterator run on large node -->
+**551462**: kv + rest on large node
+-> lmdb -> erste 10 iterationen ok
+-> level -> 9/10 iterationen ok
+-> rocksdb -> erste 10 iterationen ok -> hier hängen geblieben 
+-> misc -> 20 iterationen ok
+-> no sqlite
+-> no sqlite memory
+
+
+**551458**: 
+-> os: local -> erste 10 iterationen ok
+
+
 551463: kv + rest on small node
 551461: db all run on small node
 
