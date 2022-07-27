@@ -81,7 +81,7 @@ do
                 mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table schema_structure; rop table benchmark_insert_index_single_table; drop table schema_structure;"
             fi
 
-            /home/urz/kduwe/original-julea/scripts/benchmark.sh -p /db --duration=$time -v 2 -m  >> "${dbServerFile}"
+            /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /db --duration=$time -v 2 -m  >> "${dbServerFile}"
 
             killall julea-server
             rm -rf /tmp/julea-${SLURM_JOBID}

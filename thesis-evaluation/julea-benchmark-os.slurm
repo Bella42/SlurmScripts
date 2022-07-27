@@ -81,7 +81,7 @@ do
 
             julea-server &
 
-            /home/urz/kduwe/original-julea/scripts/benchmark.sh -p /object --duration=$time -v 2 -m  >> "${osServerFile}"
+            /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object --duration=$time -v 2 -m  >> "${osServerFile}"
 
             killall julea-server
             rm -rf /tmp/julea-${SLURM_JOBID}

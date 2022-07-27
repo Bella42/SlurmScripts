@@ -80,7 +80,7 @@ do
             echo "# Iteration = $it" >> "${kvServerFile}"  
             julea-server &
 
-            /home/urz/kduwe/original-julea/scripts/benchmark.sh -p /kv --duration=$time -v 2 -m  >> "${kvServerFile}"
+            /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /kv --duration=$time -v 2 -m  >> "${kvServerFile}"
 
             # measure rest of benchmarks once as well (easier to call in here instead of writing another large loop)
             if [ "${server}" == "leveldb" ];
@@ -88,7 +88,7 @@ do
                 echo "Runtime = $time    Iteration = $it"
                 echo " " >> "${messageFile}" 
                 echo "# Iteration = $it" >> "${messageFile}" 
-                /home/urz/kduwe/original-julea/scripts/benchmark.sh -p /message --duration=$time -v 2 -m  >> "${messageFile}"
+                /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /message --duration=$time -v 2 -m  >> "${messageFile}"
             fi
 
             killall julea-server

@@ -50,6 +50,7 @@ JobID       Nodes       Final Run?      Script
 <!-- 551451      ant19                      srun -p parcio -N 1 -w ant19 slurm-scripts/julea-benchmark.sh -->
 <!-- 551452      ant11                      srun -p parcio -N 1 -w ant11 slurm-scripts/julea-benchmark.sh -->
 <!-- 551453      ant11                      sbatch -p parcio -w ant11 -N 1 thesis_eval/slurm-scripts/julea-benchmark.slurm  -->
+
 **551455**      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark.slurm 
 -------------------------------------------------------------------------------------------------------------------------
 <!-- 551461      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (iterator) -->
@@ -58,7 +59,9 @@ JobID       Nodes       Final Run?      Script
 551464      ant17                      sbatch -p parcio -w ant17 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm (db all)
 <!-- 551465      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
 <!-- 551468      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
+
 **551474**      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb)
+
 551496          ant11                   sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm
 551497          ant17                   sbatch -p parcio -w ant17 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm 
 
