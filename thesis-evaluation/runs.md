@@ -15,25 +15,28 @@
 
 ### KV & Message & OS
 
-#### Large Nodes    (551462) - ant10
+#### Large Nodes    
+<!-- (551462) - ant10 -->
 - LMDB
 - LevelDB
 - RocksDB
 - SQLite
 - SQLite Memory
 
-- POSIX lokal
-- POSIX Ceph
+- POSIX lokal 551496
+- POSIX Ceph 551496
 
-#### Small Nodes (551463)   - ant18
+#### Small Nodes 
+<!-- (551463)   - ant18 -->
 - LMDB
 - LevelDB
 - SQLite
 - SQLite Memory
 - RocksDB
 
-- POSIX lokal
-- POSIX Ceph
+
+- POSIX lokal 551497
+- POSIX Ceph 551497
 
 
 
@@ -49,15 +52,15 @@ JobID       Nodes       Final Run?      Script
 <!-- 551453      ant11                      sbatch -p parcio -w ant11 -N 1 thesis_eval/slurm-scripts/julea-benchmark.slurm  -->
 **551455**      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark.slurm 
 -------------------------------------------------------------------------------------------------------------------------
-<!-- 551461      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (iterator) -->
+<!-- 551461      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (iterator) -->
 551462      ant10                      sbatch -p parcio -w ant10 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm
-
 551463      ant18                      sbatch -p parcio -w ant18 -N 1 Thesis-results/slurm-scripts/julea-benchmark-kv-os.slurm
 551464      ant17                      sbatch -p parcio -w ant17 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm (db all)
-
-<!-- 551465      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
-<!-- 551468      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
+<!-- 551465      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
+<!-- 551468      ant11                sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb) -->
 **551474**      ant11                      sbatch -p parcio -w ant11 -N 1 Thesis-results/slurm-scripts/julea-benchmark-db.slurm  (db all only mariadb)
+551496          ant11                   sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm
+551497          ant17                   sbatch -p parcio -w ant17 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-os.slurm 
 
 
 ## Configs & Notes
