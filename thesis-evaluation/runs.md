@@ -4,18 +4,18 @@
 
 ### DB
 
-#### Large Nodes
+#### Large Node:
 - SQLite: 551455        (ant10)
 - MariaDB (MySQL): 551474 (ant11)
 <!-- - MariaDB: 551465       (ant11)    (MySQL in file name) -->
 
-#### Small Nodes
+#### Small Node: ant15  551500
 <!-- - SQLite: 551464        (ant17) -->
 <!-- - MariaDB: 551464       (ant17)    (MySQL in file name) -->
 
 ### KV 
 
-#### Large Nodes: ant10  551498
+#### Large Node: ant10  551498
 - LMDB   
 - LevelDB
 - RocksDB
@@ -49,6 +49,7 @@ Message called in KV Benchmark
 JobID       Nodes       Final Run?      Script
 -----------------------------------------------------------------------------------------------------
 
+# 551500          ant15   Yes?        sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-db.slurm
 ## 551499          ant16   Yes?        sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
 ## 551498          ant10   Yes?        sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-kv.slurm
 
