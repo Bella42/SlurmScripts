@@ -5,7 +5,7 @@
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-%j.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-%j.out
 
 # ---------------- Parameters ----------------------------------------
-runtimeDB="1 10 60"
+runtimeDB="1"
 iterations=10
 
 # dbClient="mysql"
@@ -85,7 +85,7 @@ do
 
             if [ $(hostname) == "ant10" || $(hostname) == "ant11"]
             then
-                mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table schema_structure; rop table benchmark_insert_index_single_table; drop table schema_structure;"
+                mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table schema_structure; drop table benchmark_insert_index_single_table; drop table schema_structure;"
             fi
 
             /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /hdf5 --duration=$time -v 2 -m  >> "${dbServerFile}"

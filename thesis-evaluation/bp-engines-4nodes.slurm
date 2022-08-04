@@ -33,12 +33,16 @@ configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
 inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-4nodes.bp"
 analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-analysis-output.bp"
 
+htWriteBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
+htReadBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_read"
+
 # ---------------- Cluster Setup ----------------------------------------
-export JULEA_PREFIX="/home/urz/kduwe/julea-install"
+# export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
-. /home/urz/kduwe/mein-julea/scripts/environment.sh
-echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
+# . /home/urz/kduwe/mein-julea/scripts/environment.sh
+# echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
 
+. mein-spack/share/spack/setup-env.sh 
 
 for engine in $engines
 do
@@ -52,9 +56,15 @@ do
     		echo "# x = $proc, size = $size"
     		echo "# engine = ${engine} "
     
-    		echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_write_adios2 $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
-    		mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_write_adios2 $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations >> "${writeFile}"
+			mpirun -n 24 /tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2 mein-adios-fork/examples/heatTransfer/heat_bp5_sync.xml ht-output/test-bp5-4096-100.bp 6 4 4096 4096 10 10
+
+
+    		# echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_write_adios2 $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
+    		echo mpirun -n $proc -ppn $(($proc/4)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
+    		mpirun -n $proc -ppn $(($proc/4)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations >> "${writeFile}"
     		echo "finished writing"
+
+			ls -lah $inputOutput >> "${writeFile}"
     
     		# srun sudo /home/hr/drop-caches.sh
     
@@ -68,8 +78,9 @@ do
     		echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${readFile}"
     		echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${readFile}"
     
-    		echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_read $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} 
-    		mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_read $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} >> "${readFile}"
+    		# echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_read $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} 
+    		echo mpirun -n $proc -ppn $(($proc/4)) $htReadBin $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} 
+    		mpirun -n $proc -ppn $(($proc/4)) $htReadBin $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} >> "${readFile}"
     		echo "finished reading"
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------

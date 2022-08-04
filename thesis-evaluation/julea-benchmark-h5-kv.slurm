@@ -5,7 +5,7 @@
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-%j.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-%j.out
 
 # ---------------- Parameters ----------------------------------------
-runtime="1 10"
+runtime="1"
 iterations=10
 
 kvServer="lmdb leveldb rocksdb sqlite sqlite-memory"
