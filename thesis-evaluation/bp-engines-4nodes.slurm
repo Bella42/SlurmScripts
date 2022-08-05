@@ -33,6 +33,7 @@ htReadBin="/home/urz/kduwe/spack-adios2/spack-build-4fsljmi/bin/heatTransfer_rea
 
 # . /opt/spack/main/env.sh
 . mein-spack/share/spack/setup-env.sh 
+spack load mpi
 # spack load adios2
 
 # . /home/urz/kduwe/mein-julea/scripts/environment.sh
