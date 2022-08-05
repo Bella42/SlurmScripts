@@ -22,16 +22,6 @@ iterations=10
 steps=100
 i=0
 
-# ---------------------------------------- Output Files ----------------------------------------
-writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-write-${SLURM_JOBID}.tsv"
-readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-read-${SLURM_JOBID}.tsv"
-queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-query-${SLURM_JOBID}.tsv"
-
-configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
-
-# Will be deleted at the end!
-inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-4nodes.bp"
-analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-analysis-output.bp"
 
 htWriteBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
 htReadBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_read"
@@ -48,6 +38,17 @@ htReadBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6i
 
 for engine in $engines
 do
+
+	# ---------------------------------------- Output Files ----------------------------------------
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-read-${SLURM_JOBID}.tsv"
+	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-query-${SLURM_JOBID}.tsv"
+	
+	configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
+	
+	# Will be deleted at the end!
+	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-4nodes.bp"
+	analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-analysis-output.bp"
 
     for proc in $processes
     do
