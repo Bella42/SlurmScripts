@@ -2,7 +2,7 @@
 
 #SBATCH -N 4 --ntasks-per-node=24
 #SBATCH --partition=parcio
-#SBATCH --nodelist=ant20,ant18,ant17,ant16
+#SBATCH --nodelist=ant20,ant19,ant18,ant17
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
 # ---------------------------------------- HEATTRANSFER PARAMS ----------------------------------------
@@ -38,6 +38,10 @@ htReadBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6i
 
 # ---------------- Cluster Setup ----------------------------------------
 # export JULEA_PREFIX="/home/urz/kduwe/julea-install"
+
+. /opt/spack/main/env.sh
+. mein-spack/share/spack/setup-env.sh 
+# spack load adios2
 
 # . /home/urz/kduwe/mein-julea/scripts/environment.sh
 # echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
