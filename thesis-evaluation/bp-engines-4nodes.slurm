@@ -47,7 +47,8 @@ do
 	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-read-${SLURM_JOBID}.tsv"
 	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-query-${SLURM_JOBID}.tsv"
 
-	configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
+	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
+	configFile="mein-adios-fork/examples/heatTransfer/heat_${engine}_sync.xml"
 
 	# Will be deleted at the end!
 	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-4nodes.bp"
@@ -62,6 +63,9 @@ do
     		echo "# x = $proc, size = $size"
     		echo "# engine = ${engine} "
     
+			# mpirun -n 24 /tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2 mein-adios-fork/examples/heatTransfer/heat_bp5_sync.xml ht-output/test-bp5-4096-100.bp 6 4 4096 4096 10 10
+
+
     		# echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_write_adios2 $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
     		echo mpirun -n $proc -ppn $(($proc/4)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
     		mpirun -n $proc -ppn $(($proc/4)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations >> "${writeFile}"
