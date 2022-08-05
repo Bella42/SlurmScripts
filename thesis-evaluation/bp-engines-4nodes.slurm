@@ -12,15 +12,15 @@ sizes="1024 2048 4096"
 
 engines="bp3 bp4 bp5"
 
-declare -a N 
+# declare -a N 
 # N=(2 4 6 8 12 16)
 # M=(2 3 4 6 8 12)
-N=(2 4 6 8 12)
-M=(2 3 4 6 8)
+# N=(2 4 6 8 12)
+# M=(2 3 4 6 8)
 
 iterations=10
 steps=100
-i=0
+# i=0
 
 
 # htWriteBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
@@ -41,6 +41,11 @@ spack load mpi
 
 for engine in $engines
 do
+
+	declare -a N 
+	N=(2 4 6 8 12)
+	M=(2 3 4 6 8)
+	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
 	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-write-${SLURM_JOBID}.tsv"
