@@ -31,7 +31,7 @@ htReadBin="/home/urz/kduwe/spack-adios2/spack-build-4fsljmi/bin/heatTransfer_rea
 # ---------------- Cluster Setup ----------------------------------------
 # export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
-. /opt/spack/main/env.sh
+# . /opt/spack/main/env.sh
 . mein-spack/share/spack/setup-env.sh 
 # spack load adios2
 
