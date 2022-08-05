@@ -46,8 +46,6 @@ htReadBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6i
 # . /home/urz/kduwe/mein-julea/scripts/environment.sh
 # echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
 
-. mein-spack/share/spack/setup-env.sh 
-
 for engine in $engines
 do
 
