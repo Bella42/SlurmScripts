@@ -47,15 +47,13 @@ echo " "  >> "${file}"
 echo "# --- dd if=/dev/zero of=dummy bs=4k count=1000 oflag=sync status=progress
  ---" >> "${file}"
 echo " "  >> "${file}"
-dd if=/dev/zero of=dummy bs=4k count=1000 oflag=sync status=progress
- >>  "${file}"
+dd if=/dev/zero of=dummy bs=4k count=1000 oflag=sync status=progress >>  "${file}"
 echo " "  >> "${file}"
 
 echo "# --- dd if=/dev/zero of=dummy bs=4M count=100 oflag=sync status=progress
  ---" >> "${file}"
 echo " "  >> "${file}"
-dd if=/dev/zero of=dummy bs=4M count=100 oflag=sync status=progress
- >>  "${file}"
+dd if=/dev/zero of=dummy bs=4M count=100 oflag=sync status=progress >>  "${file}"
 echo " "  >> "${file}"
 
 echo "# -------------- dd-----------------" >> "${file}"
@@ -64,15 +62,13 @@ echo " "  >> "${file}"
 echo "# --- dd if=/dev/zero of=dummy bs=4k count=1000 status=progress
  ---" >> "${file}"
 echo " "  >> "${file}"
-dd if=/dev/zero of=dummy bs=4k count=1000 status=progress
- >>  "${file}"
+dd if=/dev/zero of=dummy bs=4k count=1000 status=progress >>  "${file}"
 echo " "  >> "${file}"
 
 echo "# --- dd if=/dev/zero of=dummy bs=4M count=100 status=progress
  ---" >> "${file}"
 echo " "  >> "${file}"
-dd if=/dev/zero of=dummy bs=4M count=100 status=progress
- >>  "${file}"
+dd if=/dev/zero of=dummy bs=4M count=100 status=progress >>  "${file}"
 echo " "  >> "${file}"
 echo " "  >> "${file}"
 
