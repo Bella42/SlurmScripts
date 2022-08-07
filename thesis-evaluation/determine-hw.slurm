@@ -3,15 +3,9 @@
 #SBATCH -N 1 --ntasks-per-node=24
 #SBATCH --partition=parcio
 
-file="/home/urz/kduwe/thesis_eval/storage-$(hostname).txt"
-hwFile="/home/urz/kduwe/thesis_eval/hardware-$(hostname).txt"
+file="/home/urz/kduwe/thesis_eval/node-hw/storage-$(hostname).txt"
+hwFile="/home/urz/kduwe/thesis_eval/node-hw/hardware-$(hostname).txt"
 
-
-echo "julea-config --user \
-        --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
-        --object-backend=posix --object-component=server --object-path="/tmp/julea-${SLURM_JOBID}/posix" \
-        --kv-backend=leveldb --kv-component=server --kv-path="/tmp/julea-${SLURM_JOBID}/leveldb" \
-        --db-backend=sqlite --db-component=server --db-path=":memory:" --name="$(hostname)-posix-local-${SLURM_JOBID}""
 
 echo "# --- Hardware of $(hostname) --- " >> "${file}"
 echo "# -------------------------------" >> "${file}"
