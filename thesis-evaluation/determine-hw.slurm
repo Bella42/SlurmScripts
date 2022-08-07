@@ -53,9 +53,9 @@ blkid >>  "${file}"
 echo " "  >> "${file}"
 echo " "  >> "${file}"
 
-echo "# --- cat /proc/cmdline | root ---" >> "${file}"
+echo "# --- cat /proc/cmdline | grep root ---" >> "${file}"
 echo " "  >> "${file}"
-cat /proc/cmdline | root >>  "${file}"
+cat /proc/cmdline | grep root >>  "${file}"
 echo " "  >> "${file}"
 echo " "  >> "${file}"
 
