@@ -25,8 +25,12 @@ steps=100
 
 # htWriteBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
 # htReadBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_read"
-htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
-htReadBin="/home/urz/kduwe/spack-adios2/spack-build-4fsljmi/bin/heatTransfer_read"
+# htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
+
+# with Query application patch
+htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/heatTransfer_write_adios2"
+htReadBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/heatTransfer_read"
+htQueryBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/thesis_eval_heatTransfer_queryAdios_283"
 
 # ---------------- Cluster Setup ----------------------------------------
 # export JULEA_PREFIX="/home/urz/kduwe/julea-install"
@@ -96,16 +100,24 @@ do
     		echo "finished reading"
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
-    
-    		# echo "# --- QueryAdios time in mikroseconds ---" >> $queryADIOSFile
-    		# echo "# MPI_Comm_size: $proc" >> $queryADIOSFile
-    		# echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> $queryADIOSFile
-    		# echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> $queryADIOSFile
-    
-    		# echo mpirun -n 1 ./bin/julea_heatTransfer_queryAdios $configFile $inputOutput 1 1 
-    		# mpirun -n 1 ./bin/julea_heatTransfer_queryAdios $configFile $inputOutput 1 1 >> $queryADIOSFile
-    		# echo "finished querying"
-    
+
+			if [ "${proc}" == 96 ] && [ "${size}" == 4096 ];
+    		then
+
+    			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryFile}"
+    			echo "# MPI_Comm_size: 1" >> "${queryFile}"
+    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryFile}"
+    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryFile}"
+
+				for (( c=1; c<=10; c++ ))
+				do  
+					echo "# Iteration = $c" >> "${queryFile}"
+    				echo mpirun -n 1 $htQueryBin $configFile $inputOutput 1 1 
+    				mpirun -n 1 $htQueryBin $configFile $inputOutput 1 1 >> "${queryFile}"
+				done
+    			echo "finished querying"
+			fi
+
     		# ---------------------------------------- Clean Up ----------------------------------------
             "/home/urz/kduwe/ht-output/"
     		echo "rm -rf ${inputOutput}/*"
