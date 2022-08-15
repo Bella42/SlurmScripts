@@ -28,9 +28,9 @@ steps=100
 # htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
 
 # with Query application patch
-htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/heatTransfer_write_adios2"
-htReadBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/heatTransfer_read"
-htQueryBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/thesis_eval_heatTransfer_queryAdios_283"
+htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-k2ehfqq/bin/heatTransfer_write_adios2"
+htReadBin="/home/urz/kduwe/spack-adios2/spack-build-k2ehfqq/bin/heatTransfer_read"
+htQueryBin="/home/urz/kduwe/spack-adios2/spack-build-k2ehfqq/bin/thesis_eval_heatTransfer_queryAdios_283"
 
 # ---------------- Cluster Setup ----------------------------------------
 # export JULEA_PREFIX="/home/urz/kduwe/julea-install"

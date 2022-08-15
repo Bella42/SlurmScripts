@@ -22,15 +22,15 @@ iterations=10
 steps=100
 # i=0
 
-
 # htWriteBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
 # htReadBin="/tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_read"
 # htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-4fsljmi/bin/heatTransfer_write_adios2"
 
 # with Query application patch
-htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/heatTransfer_write_adios2"
-htReadBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/heatTransfer_read"
-htQueryBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/thesis_eval_heatTransfer_queryAdios_283"
+# htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-7etvy3h/bin/heatTransfer_write_adios2"
+htWriteBin="/home/urz/kduwe/spack-adios2/spack-build-k2ehfqq/bin/heatTransfer_write_adios2"
+htReadBin="/home/urz/kduwe/spack-adios2/spack-build-k2ehfqq/bin/heatTransfer_read"
+htQueryBin="/home/urz/kduwe/spack-adios2/spack-build-k2ehfqq/bin/thesis_eval_heatTransfer_queryAdios_283"
 
 # ---------------- Cluster Setup ----------------------------------------
 # export JULEA_PREFIX="/home/urz/kduwe/julea-install"
