@@ -4,8 +4,13 @@
 
 ### KV
 
+ant11: 551827
+ant16: 551828
+
 ### DB
 
+ant10: 551829
+ant15: 551830
 
 
 ## JULEA Benchmark
@@ -56,11 +61,11 @@ Message called in KV Benchmark
 
 JobID       Nodes       Final Run?      Script
 -----------------------------------------------------------------------------------------------------
-551830      ant15       Yes?         sbatch -p parcio -w ant15 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm 
-551829      ant10       Yes?         sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm 
+#### 551830      ant15       **Yes**         sbatch -p parcio -w ant15 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm 
+#### 551829      ant10       **Yes**         sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm 
 
-551828      ant16       Yes?         sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-kv.slurm 
-551827      ant11       Yes?         sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-kv.slurm 
+#### 551828      ant16       **Yes**         sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-kv.slurm 
+#### 551827      ant11       **Yes**         sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-kv.slurm 
 
 <!-- 551826      ant11       No         sbatch -p parcio -w ant11 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-kv.slurm 
 551825      ant16       No         sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-kv.slurm 
@@ -68,9 +73,6 @@ JobID       Nodes       Final Run?      Script
 
 551823      ant10       Yes?         sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm
 551822      ant15       Yes?         sbatch -p parcio -w ant15 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm  -->
-
-sbatch SlurmScripts/thesis-evaluation/bp-engines-4nodes.slurm 
-Submitted batch job 587946
 
 #### 551500      ant15   **Yes**        sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-db.slurm
 
