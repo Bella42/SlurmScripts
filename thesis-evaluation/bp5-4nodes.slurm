@@ -10,7 +10,7 @@
 processes="4 12 24 48 96"
 sizes="1024 2048 4096"
 
-engines="bp3 bp4 bp5"
+engines="bp5"
 
 # declare -a N 
 # N=(2 4 6 8 12 16)
@@ -81,13 +81,7 @@ do
     		echo "finished writing"
 
 			echo "# File Size:" >> "${writeFile}"
-			if [ "${engine}" == "bp3" ];
-			then
-				ls -lah $inputOutput >> "${writeFile}"
-				ls -lah "${inputOutput}.dir" >> "${writeFile}"
-			else 
-				ls -lah $inputOutput >> "${writeFile}"
-			fi
+			ls -lah $inputOutput >> "${writeFile}"
 
     
     		# srun sudo /home/hr/drop-caches.sh
@@ -108,14 +102,8 @@ do
     		echo "finished reading"
 
 
-			echo "# File Size:" >> "${readFile}"
-			if [ "${engine}" == "bp3" ];
-			then
-				ls -lah $inputOutput >> "${readFile}"
-				ls -lah "${inputOutput}.dir" >> "${readFile}"
-			else 
-				ls -lah $inputOutput >> "${readFile}"
-			fi
+			echo "# File Size:" >> "${writeFile}"
+			ls -lah $inputOutput >> "${writeFile}"
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
@@ -135,14 +123,8 @@ do
 				done
     			echo "finished querying"
 
-				echo "# File Size:" >> "${readqueryFileFile}"
-				if [ "${engine}" == "bp3" ];
-				then
-					ls -lah $inputOutput >> "${queryFile}"
-					ls -lah "${inputOutput}.dir" >> "${queryFile}"
-				else 
-					ls -lah $inputOutput >> "${queryFile}"
-				fi
+				echo "# File Size:" >> "${writeFile}"
+				ls -lah $inputOutput >> "${writeFile}"
 			fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------

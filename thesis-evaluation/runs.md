@@ -69,6 +69,8 @@ JobID       Nodes       Final Run?      Script
 551823      ant10       Yes?         sbatch -p parcio -w ant10 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm
 551822      ant15       Yes?         sbatch -p parcio -w ant15 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-h5-db.slurm  -->
 
+sbatch SlurmScripts/thesis-evaluation/bp-engines-4nodes.slurm 
+Submitted batch job 587946
 
 #### 551500      ant15   **Yes**        sbatch -p parcio -w ant16 -N 1 SlurmScripts/thesis-evaluation/julea-benchmark-db.slurm
 
