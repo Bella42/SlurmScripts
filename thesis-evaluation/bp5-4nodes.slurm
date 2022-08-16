@@ -103,8 +103,8 @@ do
     		echo "finished reading"
 
 
-			echo "# File Size:" >> "${writeFile}"
-			ls -lah $inputOutput >> "${writeFile}"
+			echo "# File Size:" >> "${readFile}"
+			ls -lah $inputOutput >> "${readFile}"
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
@@ -124,8 +124,8 @@ do
 				done
     			echo "finished querying"
 
-				echo "# File Size:" >> "${writeFile}"
-				ls -lah $inputOutput >> "${writeFile}"
+				echo "# File Size:" >> "${queryFile}"
+				ls -lah $inputOutput >> "${queryFile}"
 			fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------

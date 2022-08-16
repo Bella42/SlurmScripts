@@ -103,8 +103,8 @@ do
     		echo "finished reading"
 
 
-			echo "# File Size:" >> "${writeFile}"
-			ls -lah $inputOutput >> "${writeFile}"
+			echo "# File Size:" >> "${readFile}"
+			ls -lah $inputOutput >> "${readFile}"
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
@@ -124,18 +124,18 @@ do
 				done
     			echo "finished querying"
 
-				echo "# File Size:" >> "${writeFile}"
-				ls -lah $inputOutput >> "${writeFile}"
+				echo "# File Size:" >> "${queryFile}"
+				ls -lah $inputOutput >> "${queryFile}"
 			fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------
             # "/home/urz/kduwe/ht-output/"
-    		echo "rm -rf ${inputOutput}/*"
-            rm -rf ${inputOutput}/*
+    		echo "rm -rf ${inputOutput}"
+            rm -rf ${inputOutput}
     		# rm -rf /mnt/lustre/duwe/heat-bp4-4nodes.bp*
     
-    		echo "rm -rf ${analysisOutput}/*"
-    		rm -rf ${analysisOutput}/*
+    		echo "rm -rf ${analysisOutput}"
+    		rm -rf ${analysisOutput}
     	done
     	i=$((i+1))
     done
