@@ -138,7 +138,7 @@ do
 			fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------
-            "/home/urz/kduwe/ht-output/"
+            # "/home/urz/kduwe/ht-output/"
     		echo "rm -rf ${inputOutput}/*"
             rm -rf ${inputOutput}/*
     		# rm -rf /mnt/lustre/duwe/heat-bp4-4nodes.bp*
