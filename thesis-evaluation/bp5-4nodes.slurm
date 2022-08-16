@@ -2,6 +2,7 @@
 
 #SBATCH -N 4 --ntasks-per-node=24
 #SBATCH --partition=parcio
+#SBATCH --exclusive
 #SBATCH --nodelist=ant20,ant19,ant18,ant17
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
