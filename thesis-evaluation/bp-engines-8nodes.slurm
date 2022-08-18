@@ -1,15 +1,14 @@
 #!/bin/bash
 
-#SBATCH -N 1 --ntasks-per-node=24
+#SBATCH -N 8 --ntasks-per-node=24
 #SBATCH --partition=parcio
-#SBATCH --nodelist=ant20
+#SBATCH --nodelist=ant20,ant19,ant18,ant17,ant16,ant15,ant14,ant13
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
 # ---------------------------------------- HEATTRANSFER PARAMS ----------------------------------------
-# processes="4 12 24 48 96 192"
-# processes="4 12 24 48 96"
-processes="1 3 6 12 24"
-sizes="1024 2048 4096"
+processes="8 24 48 96 192"
+
+sizes="1024"
 
 engines="bp3 bp4 bp5"
 
@@ -46,20 +45,20 @@ for engine in $engines
 do
 
 	declare -a N 
-	N=(1 3 3 4 6)
-	M=(1 1 2 3 4)
+	N=(4 6 8 24 24)
+	M=(2 4 6 4 8)
 	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
-	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-1node-ceph-write-${SLURM_JOBID}.tsv"
-	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-1node-ceph-read-${SLURM_JOBID}.tsv"
-	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-1node-ceph-query-${SLURM_JOBID}.tsv"
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-8nodes-ceph-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-8nodes-ceph-read-${SLURM_JOBID}.tsv"
+	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-8nodes-ceph-query-${SLURM_JOBID}.tsv"
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
 	configFile="mein-adios-fork/examples/heatTransfer/heat_${engine}_sync.xml"
 
 	# Will be deleted at the end!
-	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-1node.bp"
+	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-2nodes.bp"
 	analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-analysis-output.bp"
 
     for proc in $processes
@@ -75,8 +74,8 @@ do
 
 
     		# echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_write_adios2 $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
-    		echo mpirun -n $proc -ppn $(($proc/1)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
-    		mpirun -n $proc -ppn $(($proc/1)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations >> "${writeFile}"
+    		echo mpirun -n $proc -ppn $(($proc/8)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
+    		mpirun -n $proc -ppn $(($proc/8)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations >> "${writeFile}"
     		echo "finished writing"
 
 			echo "# File Size:" >> "${writeFile}"
@@ -102,8 +101,8 @@ do
     		echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${readFile}"
     
     		# echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_read $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} 
-    		echo mpirun -n $proc -ppn $(($proc/1)) $htReadBin $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} 
-    		mpirun -n $proc -ppn $(($proc/1)) $htReadBin $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} >> "${readFile}"
+    		echo mpirun -n $proc -ppn $(($proc/8)) $htReadBin $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} 
+    		mpirun -n $proc -ppn $(($proc/8)) $htReadBin $configFile $inputOutput $analysisOutput ${N[$i]} ${M[$i]} >> "${readFile}"
     		echo "finished reading"
 
 
@@ -118,7 +117,7 @@ do
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ] && [ "${size}" == 4096 ];
+			if [ "${proc}" == 192 ] && [ "${size}" == 1024 ];
     		then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryFile}"

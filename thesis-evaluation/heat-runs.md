@@ -8,8 +8,13 @@
 
 #### 1 Node
 sbatch SlurmScripts/thesis-evaluation/bp-engines-1node.slurm 
-Submitted batch job 588403
+<!-- Submitted batch job 588403 -->
+Submitted batch job 588404
 
+#### 2 Nodes
+
+sbatch SlurmScripts/thesis-evaluation/bp-engines-2nodes.slurm 
+Submitted batch job 588405
 
 #### 4 Nodes
 
