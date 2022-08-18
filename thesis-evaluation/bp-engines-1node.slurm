@@ -51,15 +51,15 @@ do
 	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
-	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-write-${SLURM_JOBID}.tsv"
-	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-read-${SLURM_JOBID}.tsv"
-	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-4node-ceph-query-${SLURM_JOBID}.tsv"
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-1node-ceph-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-1node-ceph-read-${SLURM_JOBID}.tsv"
+	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-1node-ceph-query-${SLURM_JOBID}.tsv"
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
 	configFile="mein-adios-fork/examples/heatTransfer/heat_${engine}_sync.xml"
 
 	# Will be deleted at the end!
-	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-4nodes.bp"
+	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-1node.bp"
 	analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-analysis-output.bp"
 
     for proc in $processes
