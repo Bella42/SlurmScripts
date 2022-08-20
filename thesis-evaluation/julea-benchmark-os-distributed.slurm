@@ -66,6 +66,7 @@ do
 
             # srun echo "1. Hostname: $(hostname)"
             srun hostname
+            echo "${SLURMD_NODENAME}"
             if [[ ${SLURMD_NODENAME} == "ant14" ]];
             then
                 echo "inside if"
