@@ -66,7 +66,11 @@ do
             echo "Julea server started"
 
             # srun echo "1. Hostname: $(hostname)"
+            echo "srun hostname:"
             srun hostname
+
+            echo "hostname:"
+            hostname
             # echo "${SLURMD_NODENAME}" -> unfortunately not helping here
 
             if [[ ${SLURMD_NODENAME} == "ant14" ]];
