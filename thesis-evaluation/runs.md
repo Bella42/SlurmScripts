@@ -13,6 +13,12 @@ ant10: 551829
 ant15: 551830
 
 
+### Native
+
+sbatch -p parcio -w ant14 SlurmScripts/thesis-evaluation/julea-benchmark-h5-native.slurm 
+Submitted batch job 588411
+
+
 ## JULEA Benchmark
 
 ### DB

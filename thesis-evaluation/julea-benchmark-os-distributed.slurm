@@ -58,11 +58,15 @@ do
             echo "# Iteration = $it" >> "${osServerFile}"  
 
             julea-server &
+            echo "Julea server started"
 
             if [[ ${hostname} == "ant13" ]];
             then
+                echo "Hostname: $(hostname)"
                 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
+                echo "after benchmark"
             fi
+            echo "after if"
             killall julea-server
             rm -rf /tmp/julea-${SLURM_JOBID}
             rm -rf /home/urz/kduwe/julea-${SLURM_JOBID}
