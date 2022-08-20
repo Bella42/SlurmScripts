@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -N 3 
+#SBATCH -N 3 --ntasks-per-node=1
 #SBATCH --partition=parcio
 #SBATCH --nodelist=ant10,ant11,ant14
 #SBATCH --exclusive
