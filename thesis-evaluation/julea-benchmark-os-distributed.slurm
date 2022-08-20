@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #SBATCH -N 3 --ntasks-per-node=1 --cpus-per-task=3
+# SBATCH -N 3 --ntasks-per-node=1 --cpus-per-task=3
 #SBATCH --partition=parcio
 #SBATCH --nodelist=ant10,ant11,ant14
 #SBATCH --exclusive
@@ -65,16 +66,8 @@ do
             srun julea-server &
             echo "Julea server started"
 
-            # srun echo "1. Hostname: $(hostname)"
-            # echo "srun hostname:"
-            srun hostname
-
-            # echo "hostname:"
-            hostname
-            # echo "${SLURMD_NODENAME}" -> unfortunately not helping here
-            echo "$HOSTNAME"
-
-            if [[ "$HOSTNAME" = "ant14" ]];
+            # if [[ "$HOSTNAME" = "ant14" ]];
+            if [[ $(srun hostname) = "ant14" ]];
             then
                 echo "inside if"
                 srun hostname
