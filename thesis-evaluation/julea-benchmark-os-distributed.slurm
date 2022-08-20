@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -N 3 --ntasks-per-node=1
+#SBATCH -N 3 --ntasks-per-node=1 --cpus-per-task=3
 #SBATCH --partition=parcio
 #SBATCH --nodelist=ant10,ant11,ant14
 #SBATCH --exclusive
@@ -74,7 +74,7 @@ do
             # echo "${SLURMD_NODENAME}" -> unfortunately not helping here
             echo "$HOSTNAME"
 
-            if [[ "$HOSTNAME" == "ant14" ]];
+            if [[ "$HOSTNAME" = "ant14" ]];
             then
                 echo "inside if"
                 srun hostname
