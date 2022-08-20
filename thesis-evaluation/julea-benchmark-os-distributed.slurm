@@ -15,9 +15,9 @@ iterations=1
 osServer="posix"
 
 # ---------------- Cluster Setup ----------------------------------------
-srun export JULEA_PREFIX="/home/urz/kduwe/julea-install"
+export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
-srun . /home/urz/kduwe/mein-julea/scripts/environment.sh
+. /home/urz/kduwe/mein-julea/scripts/environment.sh
 echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
 
 
@@ -79,7 +79,7 @@ do
 
             srun killall julea-server
             srun rm -rf /tmp/julea-424242
-            srun rm -rf /home/urz/kduwe/julea-424242
+            rm -rf /home/urz/kduwe/julea-424242
         done
     done
 done
