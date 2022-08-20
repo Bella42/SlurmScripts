@@ -2,7 +2,8 @@
 
 #SBATCH -N 3
 #SBATCH --partition=parcio
-#SBATCH --nodelist=ant10,ant11,ant13
+#SBATCH --nodelist=ant10,ant11,ant14
+#SBATCH --exclusive
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-%j.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-%j.out
 
 # ---------------- Parameters ----------------------------------------
