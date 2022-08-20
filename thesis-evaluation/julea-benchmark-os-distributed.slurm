@@ -36,15 +36,18 @@ do
 
     # export JULEA_CONFIG="$(hostname)-posix-distributed-object-${SLURM_JOBID}"
     # echo "Exported JULEA config: ~/.config/julea/$(hostname)-posix-distributed-object-${SLURM_JOBID}"
-    export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant13-dos"
-    echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant13-dos"
+
+    # export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant13-dos"
+    # echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant13-dos"
+    export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant14-dos"
+    echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant14-dos"
   
         
     for time in $runtime
     do 
         # ---------------- Output ----------------------------------------
         #  results-jbench/kv/kv-lmdb-jobid.tsv
-        osServerFile="/home/urz/kduwe/thesis_eval/results-jbench/os/dist-os-${server}-ant10-11-13-${SLURM_JOBID}.tsv"
+        osServerFile="/home/urz/kduwe/thesis_eval/results-jbench/os/dist-os-${server}-ant10-11-14-${SLURM_JOBID}.tsv"
 
         echo "${osServerFile}"
         echo " " >> "${osServerFile}"
@@ -60,7 +63,7 @@ do
             julea-server &
             echo "Julea server started"
 
-            if [[ ${hostname} == "ant13" ]];
+            if [[ ${hostname} == "ant14" ]];
             then
                 echo "Hostname: $(hostname)"
                 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
