@@ -64,9 +64,10 @@ do
             julea-server &
             echo "Julea server started"
 
+            echo "1. Hostname: $(hostname)"
             if [[ ${hostname} == "ant14" ]];
             then
-                echo "Hostname: $(hostname)"
+                echo "2. Hostname: $(hostname)"
                 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
                 echo "after benchmark"
             fi
