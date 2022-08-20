@@ -72,8 +72,9 @@ do
             # echo "hostname:"
             hostname
             # echo "${SLURMD_NODENAME}" -> unfortunately not helping here
+            echo "$HOSTNAME"
 
-            if [[ ${SLURMD_NODENAME} == "ant14" ]];
+            if [[ "$HOSTNAME" == "ant14" ]];
             then
                 echo "inside if"
                 srun hostname
