@@ -64,10 +64,11 @@ do
             srun julea-server &
             echo "Julea server started"
 
-            srun echo "1. Hostname: $(hostname)"
-            if [[ ${hostname} == "ant14" ]];
+            # srun echo "1. Hostname: $(hostname)"
+            srun hostname
+            if [[ ${SLURMD_NODENAME} == "ant14" ]];
             then
-                srun echo "2. Hostname: $(hostname)"
+                srun hostname
                 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
                 echo "after benchmark"
             fi
