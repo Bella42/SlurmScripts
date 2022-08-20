@@ -8,7 +8,8 @@
 
 # ---------------- Parameters ----------------------------------------
 runtime="1 10"
-iterations=10
+# iterations=10
+iterations=1
 
 # kvServer="lmdb leveldb rocksdb sqlite sqlite-memory"
 osServer="posix"
@@ -66,9 +67,8 @@ do
 
             # srun echo "1. Hostname: $(hostname)"
             srun hostname
-            echo "${SLURMD_NODENAME}"
-            echo "$SLURMD_NODENAME"
-            echo $SLURMD_NODENAME
+            # echo "${SLURMD_NODENAME}" -> unfortunately not helping here
+
             if [[ ${SLURMD_NODENAME} == "ant14" ]];
             then
                 echo "inside if"
@@ -76,7 +76,7 @@ do
                 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
                 echo "after benchmark"
             fi
-            echo "after if"
+
             srun killall julea-server
             srun rm -rf /tmp/julea-424242
             srun rm -rf /home/urz/kduwe/julea-424242
