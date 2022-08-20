@@ -133,7 +133,7 @@ do
 				done
     			echo "finished querying"
 
-				echo "# File Size:" >> "${readqueryFileFile}"
+				echo "# File Size:" >> "${queryFile}"
 				if [ "${engine}" == "bp3" ];
 				then
 					ls -lah $inputOutput >> "${queryFile}"

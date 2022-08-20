@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#SBATCH -N 1 
+#SBATCH -N 3
 #SBATCH --partition=parcio
+#SBATCH --nodelist=ant10,ant11,ant13
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-%j.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-%j.out
 
 # ---------------- Parameters ----------------------------------------
@@ -58,8 +59,10 @@ do
 
             julea-server &
 
-            /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
-
+            if [[ ${hostname} == "ant13" ]];
+            then
+                /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
+            fi
             killall julea-server
             rm -rf /tmp/julea-${SLURM_JOBID}
             rm -rf /home/urz/kduwe/julea-${SLURM_JOBID}
