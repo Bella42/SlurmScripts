@@ -73,8 +73,8 @@ do
             fi
             echo "after if"
             srun killall julea-server
-            srun rm -rf /tmp/julea-${SLURM_JOBID}
-            srun rm -rf /home/urz/kduwe/julea-${SLURM_JOBID}
+            srun rm -rf /tmp/julea-424242
+            srun rm -rf /home/urz/kduwe/julea-424242
         done
     done
 done
