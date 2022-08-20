@@ -66,10 +66,10 @@ do
             echo "Julea server started"
 
             # srun echo "1. Hostname: $(hostname)"
-            echo "srun hostname:"
+            # echo "srun hostname:"
             srun hostname
 
-            echo "hostname:"
+            # echo "hostname:"
             hostname
             # echo "${SLURMD_NODENAME}" -> unfortunately not helping here
 
