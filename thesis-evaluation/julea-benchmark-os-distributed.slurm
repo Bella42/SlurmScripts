@@ -41,7 +41,7 @@ do
 
     # export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant13-dos"
     # echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant13-dos"
-    srun export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant14-dos"
+    export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant14-dos"
     echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant14-dos"
   
         
