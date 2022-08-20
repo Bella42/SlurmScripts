@@ -83,7 +83,7 @@ do
 
             srun killall julea-server
             srun rm -rf /tmp/julea-424242
-            rm -rf /home/urz/kduwe/julea-424242
+            # rm -rf /home/urz/kduwe/julea-424242
         done
     done
 done
