@@ -72,9 +72,9 @@ do
                 echo "after benchmark"
             fi
             echo "after if"
-            killall julea-server
-            rm -rf /tmp/julea-${SLURM_JOBID}
-            rm -rf /home/urz/kduwe/julea-${SLURM_JOBID}
+            srun killall julea-server
+            srun rm -rf /tmp/julea-${SLURM_JOBID}
+            srun rm -rf /home/urz/kduwe/julea-${SLURM_JOBID}
         done
     done
 done
