@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -N 3 --ntasks-per-node=1
+#SBATCH -N 3 
 #SBATCH --partition=parcio
 #SBATCH --nodelist=ant10,ant11,ant14
 #SBATCH --exclusive
@@ -14,9 +14,9 @@ iterations=10
 osServer="posix"
 
 # ---------------- Cluster Setup ----------------------------------------
-export JULEA_PREFIX="/home/urz/kduwe/julea-install"
+srun export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
-. /home/urz/kduwe/mein-julea/scripts/environment.sh
+srun . /home/urz/kduwe/mein-julea/scripts/environment.sh
 echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
 
 
@@ -40,7 +40,7 @@ do
 
     # export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant13-dos"
     # echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant13-dos"
-    export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant14-dos"
+    srun export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant14-dos"
     echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant14-dos"
   
         
