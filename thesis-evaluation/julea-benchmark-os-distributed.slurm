@@ -68,6 +68,7 @@ do
             srun hostname
             if [[ ${SLURMD_NODENAME} == "ant14" ]];
             then
+                echo "inside if"
                 srun hostname
                 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
                 echo "after benchmark"
