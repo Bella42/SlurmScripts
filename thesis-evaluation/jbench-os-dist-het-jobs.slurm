@@ -4,7 +4,9 @@
 #SBATCH hetjob
 #SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant11 --exclusive
 #SBATCH hetjob
-#SBATCH -N 1 --ntasks-per-node=6 --partition=parcio --nodelist=ant14 
+#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant14 
+#SBATCH hetjob
+#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant15
 
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-%j.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-%j.out
 
@@ -66,15 +68,15 @@ do
 
             # srun julea-server & 
 
-            host10=$(srun --het-group=0 hostname)
-            host11=$(srun --het-group=1 hostname)
-            host14=$(srun --het-group=2 --ntasks-per-node=1 hostname)
+            host1=$(srun --het-group=0 hostname)
+            host2=$(srun --het-group=1 hostname)
+            host3=$(srun --het-group=2 hostname)
 
-            echo {$host10}
-            echo {$host11}
-            echo {$host14}
+            echo "host1: " {$host1}
+            echo "host2: " {$host2}
+            echo "host3: " {$host3}
 
-            srun --het-group=0 julea-server --daemon --host "${host10}" : --het-group=1 julea-server --daemon --host "${host11}" : --het-group=2 julea-server --daemon --host "ant14" 
+            srun --het-group=0 julea-server --daemon --host "${host1}" : --het-group=1 julea-server --daemon --host "${host2}" : --het-group=2 julea-server --daemon --host "${host3}" 
             
             echo "Julea server started"
 
@@ -83,7 +85,7 @@ do
             # then
             #     echo "inside if"
 
-            srun --het-group=2 --ntasks-per-node=1 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
+            srun --het-group=3 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
             #     echo "after benchmark"
             # fi
 
