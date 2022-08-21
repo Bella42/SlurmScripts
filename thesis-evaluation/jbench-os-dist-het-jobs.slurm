@@ -70,6 +70,10 @@ do
             host11=$(srun --het-group=1 hostname)
             host14=$(srun --het-group=2 hostname)
 
+            echo {$host10}
+            echo {$host11}
+            echo {$host14}
+
             srun --het-group=0 julea-server --daemon --host "${host10}" : --het-group=1 julea-server --daemon --host "${host11}" : --het-group=2 julea-server --daemon --host "${host14}" 
             
             echo "Julea server started"
