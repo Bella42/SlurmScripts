@@ -78,6 +78,12 @@ do
             # echo "host3: " {$host3}
 
             srun --het-group=0 julea-server --daemon --host "${host1}" 
+            echo "ping ant10:4711"
+            ping ant10:4711
+            echo "ping ant10:4712"
+            ping ant10:4712
+            echo "ping ant10:22"
+            ping ant10:22
             # : --het-group=1 julea-server --daemon --host "${host2}" : --het-group=2 julea-server --daemon --host "${host3}" 
             
             echo "Julea server started"
