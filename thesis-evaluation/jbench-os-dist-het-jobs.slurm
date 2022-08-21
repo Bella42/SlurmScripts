@@ -1,10 +1,11 @@
 #!/bin/bash
 
-#SBATCH -N 3 --ntasks-per-node=1 --cpus-per-task=3
-# SBATCH -N 3 --ntasks-per-node=1 --cpus-per-task=3
-#SBATCH --partition=parcio
-#SBATCH --nodelist=ant10,ant11,ant14
-#SBATCH --exclusive
+#SBATCH -N 1 --ntasks-per-node=3 --partition=parcio --nodelist=ant10 --exclusive
+#SBATCH hetjob
+#SBATCH -N 1 --ntasks-per-node=3 --partition=parcio --nodelist=ant11 --exclusive
+#SBATCH hetjob
+#SBATCH -N 1 --ntasks-per-node=6 --partition=parcio --nodelist=ant14 --exclusive
+
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-%j.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-%j.out
 
 # ---------------- Parameters ----------------------------------------
@@ -63,19 +64,27 @@ do
             echo " " >> "${osServerFile}" 
             echo "# Iteration = $it" >> "${osServerFile}"  
 
-            srun julea-server &
+            # srun julea-server & 
+
+            host10=$(srun --het-group=0 hostname)
+            host11=$(srun --het-group=1 hostname)
+            host14=$(srun --het-group=2 hostname)
+
+            srun --het-group=0 julea-server --daemon --host "${host10}" : --het-group=1 julea-server --daemon --host "${host11}" : --het-group=2 julea-server --daemon --host "${host14}" 
+            
             echo "Julea server started"
 
             # if [[ "$HOSTNAME" = "ant14" ]];
-            if [[ $(srun hostname) = "ant14" ]];
-            then
-                echo "inside if"
-                /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
-                echo "after benchmark"
-            fi
+            # if [[ $(srun hostname) = "ant14" ]];
+            # then
+            #     echo "inside if"
 
-            srun killall julea-server
-            srun rm -rf /tmp/julea-424242
+            srun --het-group=2 /home/urz/kduwe/mein-julea/scripts/benchmark.sh -p /object/distributed-object --duration=$time -v 2 -m  >> "${osServerFile}"
+            #     echo "after benchmark"
+            # fi
+
+            srun --het-group=0,1,2 killall julea-server
+            srun --het-group=0,1,2 rm -rf /tmp/julea-424242
             # rm -rf /home/urz/kduwe/julea-424242
         done
     done
