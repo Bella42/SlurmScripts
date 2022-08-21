@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH -N 1 --ntasks-per-node=3 --partition=parcio --nodelist=ant10 --exclusive
+#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant10 --exclusive
 #SBATCH hetjob
-#SBATCH -N 1 --ntasks-per-node=3 --partition=parcio --nodelist=ant11 --exclusive
+#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant11 --exclusive
 #SBATCH hetjob
 #SBATCH -N 1 --ntasks-per-node=6 --partition=parcio --nodelist=ant14 --exclusive
 
@@ -68,13 +68,13 @@ do
 
             host10=$(srun --het-group=0 hostname)
             host11=$(srun --het-group=1 hostname)
-            host14=$(srun --het-group=2 hostname)
+            # host14=$(srun --het-group=2 hostname)
 
             echo {$host10}
             echo {$host11}
-            echo {$host14}
+            # echo {$host14}
 
-            srun --het-group=0 julea-server --daemon --host "${host10}" : --het-group=1 julea-server --daemon --host "${host11}" : --het-group=2 julea-server --daemon --host "${host14}" 
+            srun --het-group=0 julea-server --daemon --host "${host10}" : --het-group=1 julea-server --daemon --host "${host11}" : --het-group=2 julea-server --daemon --host "ant14" 
             
             echo "Julea server started"
 
