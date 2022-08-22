@@ -83,6 +83,7 @@ do
             echo $HOSTNAME
             echo ${HOSTNAME}
 
+            echo $(hostname)
 
 
             # echo "host3: " {$host3}
