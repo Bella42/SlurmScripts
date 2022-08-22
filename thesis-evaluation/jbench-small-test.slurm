@@ -26,11 +26,7 @@ echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
 ## ---------------- OS Server ---
 for server in $osServer
 do 
-    # julea-config --user \
-    # --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
-    # --object-backend=posix --object-component=server --object-path="/tmp/julea-${SLURM_JOBID}/posix" \
-    # --kv-backend=leveldb --kv-component=server --kv-path="/tmp/julea-${SLURM_JOBID}/leveldb" \
-    # --db-backend=sqlite --db-component=server --db-path=":memory:" --name="$(hostname)-posix-distributed-object-${SLURM_JOBID}"
+    
             
     # echo " julea-config --user \
     # --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
@@ -43,8 +39,9 @@ do
 
     # export JULEA_CONFIG="~/.config/julea/ant10-ant11-ant13-dos"
     # echo "Exported JULEA config: ~/.config/julea/ant10-ant11-ant13-dos"
-    export JULEA_CONFIG="~/.config/julea/ant10-test"
-    echo "Exported JULEA config: ~/.config/julea/ant10-test"
+
+    # export JULEA_CONFIG="~/.config/julea/ant10-test"
+    # echo "Exported JULEA config: ~/.config/julea/ant10-test"
   
         
     for time in $runtime
@@ -66,6 +63,12 @@ do
 
             # srun julea-server & 
 
+            julea-config --user \
+            --object-servers="$(hostname)" --kv-servers="$(hostname)" --db-servers="$(hostname)" \
+            --object-backend=posix --object-component=server --object-path="/tmp/julea-${SLURM_JOBID}/posix" \
+            --kv-backend=leveldb --kv-component=server --kv-path="/tmp/julea-${SLURM_JOBID}/leveldb" \
+            --db-backend=sqlite --db-component=server --db-path=":memory:" --name="$(hostname)-test-${SLURM_JOBID}"
+
             # host1=$(srun hostname)
             host0=$(srun --het-group=0 hostname)
             host1=$(srun --het-group=1 hostname)
@@ -74,8 +77,9 @@ do
             echo "host0: " {$host0}
             echo "host1: " {$host1}
             # echo "host3: " {$host3}
-
+            # if [[ ${host0} = "ant10" ]]
             julea-server --daemon --host "${host0}"
+            julea-server --daemon --host "${host1}"
             # julea-server --daemon --host "${host1}" : --het-group=1 julea-server --daemon --host "${host2}" : --het-group=2 julea-server --daemon --host "${host3}" 
             # echo "ping ant10:4711"
             # ping ant10:4711
