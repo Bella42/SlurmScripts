@@ -76,10 +76,21 @@ do
 
             echo "host0: " {$host0}
             echo "host1: " {$host1}
+
+            echo hostname
+            echo "$HOSTNAME"
+            echo "${HOSTNAME}"
+            echo $HOSTNAME
+            echo ${HOSTNAME}
+
+
+
             # echo "host3: " {$host3}
-            # if [[ ${host0} = "ant10" ]]
-            julea-server --daemon --host "${host0}"
-            julea-server --daemon --host "${host1}"
+            # if [[ $(srun --het-group=0 hostname) = "ant10" ]]
+            # julea-server --daemon --host "${host0}"
+
+            # if [[ $(srun --het-group=0 hostname) = "ant10" ]]
+            # julea-server --daemon --host "${host1}"
             # julea-server --daemon --host "${host1}" : --het-group=1 julea-server --daemon --host "${host2}" : --het-group=2 julea-server --daemon --host "${host3}" 
             # echo "ping ant10:4711"
             # ping ant10:4711
