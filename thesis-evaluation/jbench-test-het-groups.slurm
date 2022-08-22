@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant10 --exclusive
+#SBATCH -N 1 --partition=parcio --nodelist=ant10 --exclusive
 #SBATCH hetjob
-#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant11 --exclusive
+#SBATCH -N 1 --partition=parcio --nodelist=ant11 --exclusive
 #SBATCH hetjob
-#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant14 
+#SBATCH -N 1 --partition=parcio --nodelist=ant14 --exclusive
 #SBATCH hetjob
-#SBATCH -N 1 --ntasks-per-node=1 --partition=parcio --nodelist=ant15
+#SBATCH -N 1 --partition=parcio --nodelist=ant15 --exclusive
 
 # SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-%j.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-%j.out
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/benchmark-${SLURM_JOBID}.err --output=/home/urz/kduwe/thesis_eval/output/benchmark-${SLURM_JOBID}.out
@@ -69,16 +69,16 @@ do
 
             # srun julea-server & 
 
-            host1=$(srun hostname)
-            # host1=$(srun --het-group=0 hostname)
-            # host2=$(srun --het-group=1 hostname)
-            # host3=$(srun --het-group=2 hostname)
+            # host1=$(srun hostname)
+            host1=$(srun --het-group=0 hostname)
+            host2=$(srun --het-group=1 hostname)
+            host3=$(srun --het-group=2 hostname)
 
             echo "host1: " {$host1}
-            # echo "host2: " {$host2}
-            # echo "host3: " {$host3}
+            echo "host2: " {$host2}
+            echo "host3: " {$host3}
 
-            julea-server --daemon --host "${host1}" 
+            julea-server --daemon --host "${host1}" : --het-group=1 julea-server --daemon --host "${host2}" : --het-group=2 julea-server --daemon --host "${host3}" 
             # echo "ping ant10:4711"
             # ping ant10:4711
             # echo "ping ant10:4712"
@@ -98,8 +98,8 @@ do
             #     echo "after benchmark"
             # fi
 
-            srun --het-group=0 killall julea-server
-            srun --het-group=0 rm -rf /tmp/julea-424242
+            srun --het-group=0,1,2 killall julea-server
+            srun --het-group=0,1,2 rm -rf /tmp/julea-424242
             # rm -rf /home/urz/kduwe/julea-424242
         done
     done
