@@ -52,13 +52,13 @@ do
 	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
-	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-ceph-write-${SLURM_JOBID}.tsv"
-	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-ceph-read-${SLURM_JOBID}.tsv"
-	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-ceph-query-${SLURM_JOBID}.tsv"
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-$(hostname)-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-$(hostname)-read-${SLURM_JOBID}.tsv"
+	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-$(hostname)-query-${SLURM_JOBID}.tsv"
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
 	# configFile="mein-adios-fork/examples/heatTransfer/heat_${engine}_sync.xml"
-    configFile="/home/urz/kduwe/julea-adios2/examples/thesis/heatTransfer/heat_${engine}_sync.xml"
+    configFile="/home/urz/kduwe/julea-adios2/examples/thesis/heatTransfer/heat_${engine}.xml"
 
 	# Will be deleted at the end!
 	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-1node.bp"
