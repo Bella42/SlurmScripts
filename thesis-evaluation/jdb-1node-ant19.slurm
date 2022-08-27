@@ -18,6 +18,10 @@ htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_writ
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
 htQueryBin="/home/urz/kduwe/spack-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
 
+osServer="/tmp/julea-551823/posix"
+kvServer="/tmp/julea-551823/leveldb"
+dbServer="/tmp/kduwe/localdb:/var/lib/mysql"
+
 # ---------------- Cluster Setup ----------------------------------------
 # . /opt/spack/main/env.sh
 . mein-spack/share/spack/setup-env.sh 
@@ -68,6 +72,15 @@ do
     do
     	for size in $sizes
     	do
+			killall julea-server
+
+            # mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table schema_structure; drop table benchmark_insert_index_single_table; drop table schema_structure;"
+            mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table adios2_Thesis_eval_ColderThanMinus12; drop table adios2_Thesis_eval_block-metadata; drop table adios2_Thesis_eval_climate-indices; drop table adios2_Thesis_eval_config_precompute; drop table adios2_Thesis_eval_config_tags;
+			drop table adios2_Thesis_eval_daily-global-statistics; drop table adios2_Thesis_eval_variable-metadata;
+			drop table adios2_block-metadata; drop table adios2_variable-metadata; drop table schema_structure;
+			
+			julea-server &
+			
     		# ---------------------------------------- Writing ----------------------------------------
     		echo "# i = $i, N = ${N[$i]}, M = ${M[$i]}"
     		echo "# x = $proc, size = $size"
@@ -82,13 +95,10 @@ do
     		echo "finished writing"
 
 			echo "# File Size:" >> "${writeFile}"
-			if [ "${engine}" == "bp3" ];
-			then
-				ls -lah $inputOutput >> "${writeFile}"
-				ls -lah "${inputOutput}.dir" >> "${writeFile}"
-			else 
-				ls -lah $inputOutput >> "${writeFile}"
-			fi
+	
+			ls -lah $osServer >> "${writeFile}"
+			ls -lah $kvServer >> "${writeFile}"
+			ls -lah $dbServer >> "${writeFile}"
 
     
     		# srun sudo /home/hr/drop-caches.sh
@@ -109,14 +119,12 @@ do
     		echo "finished reading"
 
 
-			echo "# File Size:" >> "${readFile}"
-			if [ "${engine}" == "bp3" ];
-			then
-				ls -lah $inputOutput >> "${readFile}"
-				ls -lah "${inputOutput}.dir" >> "${readFile}"
-			else 
-				ls -lah $inputOutput >> "${readFile}"
-			fi
+			echo "# File Size:" >> "${writeFile}"
+	
+			ls -lah $osServer >> "${writeFile}"
+			ls -lah $kvServer >> "${writeFile}"
+			ls -lah $dbServer >> "${writeFile}"
+
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
@@ -136,17 +144,18 @@ do
 				done
     			echo "finished querying"
 
-				echo "# File Size:" >> "${queryFile}"
-				if [ "${engine}" == "bp3" ];
-				then
-					ls -lah $inputOutput >> "${queryFile}"
-					ls -lah "${inputOutput}.dir" >> "${queryFile}"
-				else 
-					ls -lah $inputOutput >> "${queryFile}"
-				fi
+				echo "# File Size:" >> "${writeFile}"
+
+				ls -lah $osServer >> "${writeFile}"
+				ls -lah $kvServer >> "${writeFile}"
+				ls -lah $dbServer >> "${writeFile}"
+
 			fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------
+			killall julea-server
+            rm -rf /tmp/julea-${SLURM_JOBID}
+
             # "/home/urz/kduwe/ht-output/"
     		echo "rm -rf ${inputOutput}"
             rm -rf ${inputOutput}
