@@ -31,8 +31,8 @@ htQueryBin="/home/urz/kduwe/spack-adios2/build/bin/thesis_eval_heatTransfer_quer
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
 # . /opt/spack/main/env.sh
-# . mein-spack/share/spack/setup-env.sh 
-# spack load mpi
+. mein-spack/share/spack/setup-env.sh 
+spack load mpi
 # spack load adios2
 
 . /home/urz/kduwe/mein-julea/scripts/environment.sh
