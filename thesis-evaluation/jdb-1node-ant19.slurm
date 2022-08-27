@@ -75,10 +75,8 @@ do
 			killall julea-server
 
             # mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table schema_structure; drop table benchmark_insert_index_single_table; drop table schema_structure;"
-            mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table adios2_Thesis_eval_ColderThanMinus12; drop table adios2_Thesis_eval_block-metadata; drop table adios2_Thesis_eval_climate-indices; drop table adios2_Thesis_eval_config_precompute; drop table adios2_Thesis_eval_config_tags;
-			drop table adios2_Thesis_eval_daily-global-statistics; drop table adios2_Thesis_eval_variable-metadata;
-			drop table adios2_block-metadata; drop table adios2_variable-metadata; drop table schema_structure;
-			
+            mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table adios2_Thesis_eval_ColderThanMinus12; drop table adios2_Thesis_eval_block-metadata; drop table adios2_Thesis_eval_climate-indices; drop table adios2_Thesis_eval_config_precompute; drop table adios2_Thesis_eval_config_tags; drop table adios2_Thesis_eval_daily-global-statistics; drop table adios2_Thesis_eval_variable-metadata; drop table adios2_block-metadata; drop table adios2_variable-metadata; drop table schema_structure;
+
 			julea-server &
 			
     		# ---------------------------------------- Writing ----------------------------------------
@@ -119,11 +117,11 @@ do
     		echo "finished reading"
 
 
-			echo "# File Size:" >> "${writeFile}"
+			echo "# File Size:" >> "${readFile}"
 	
-			ls -lah $osServer >> "${writeFile}"
-			ls -lah $kvServer >> "${writeFile}"
-			ls -lah $dbServer >> "${writeFile}"
+			ls -lah $osServer >> "${readFile}"
+			ls -lah $kvServer >> "${readFile}"
+			ls -lah $dbServer >> "${readFile}"
 
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
@@ -144,17 +142,17 @@ do
 				done
     			echo "finished querying"
 
-				echo "# File Size:" >> "${writeFile}"
+				echo "# File Size:" >> "${queryFile}"
 
-				ls -lah $osServer >> "${writeFile}"
-				ls -lah $kvServer >> "${writeFile}"
-				ls -lah $dbServer >> "${writeFile}"
+				ls -lah $osServer >> "${queryFile}"
+				ls -lah $kvServer >> "${queryFile}"
+				ls -lah $dbServer >> "${queryFile}"
 
 			fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------
 			killall julea-server
-            rm -rf /tmp/julea-${SLURM_JOBID}
+            rm -rf /tmp/julea-551823
 
             # "/home/urz/kduwe/ht-output/"
     		echo "rm -rf ${inputOutput}"
