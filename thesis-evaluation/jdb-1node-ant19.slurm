@@ -159,8 +159,8 @@ do
             rm -rf ${inputOutput}
     		# rm -rf /mnt/lustre/duwe/heat-bp4-4nodes.bp*
     
-    		echo "rm -rf ${analysisOutput}"
-    		rm -rf ${analysisOutput}
+    		# echo "rm -rf ${analysisOutput}"
+    		# rm -rf ${analysisOutput}
     	done
     	i=$((i+1))
     done
