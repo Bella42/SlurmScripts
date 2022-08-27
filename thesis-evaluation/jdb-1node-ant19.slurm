@@ -75,7 +75,7 @@ do
 			killall julea-server
 
             # mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table schema_structure; drop table benchmark_insert_index_single_table; drop table schema_structure;"
-            mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table adios2_Thesis_eval_ColderThanMinus12; drop table adios2_Thesis_eval_block-metadata; drop table adios2_Thesis_eval_climate-indices; drop table adios2_Thesis_eval_config_precompute; drop table adios2_Thesis_eval_config_tags; drop table adios2_Thesis_eval_daily-global-statistics; drop table adios2_Thesis_eval_variable-metadata; drop table adios2_block-metadata; drop table adios2_variable-metadata; drop table schema_structure;
+            mysql -h $(hostname) -u julea_user --password=julea_pw julea_db -e "drop table adios2_Thesis_eval_ColderThanMinus12; drop table adios2_Thesis_eval_block-metadata; drop table adios2_Thesis_eval_climate-indices; drop table adios2_Thesis_eval_config_precompute; drop table adios2_Thesis_eval_config_tags; drop table adios2_Thesis_eval_daily-global-statistics; drop table adios2_Thesis_eval_variable-metadata; drop table adios2_block-metadata; drop table adios2_variable-metadata; drop table schema_structure;"
 
 			julea-server &
 			
