@@ -21,9 +21,9 @@ htQueryBin="/home/urz/kduwe/spack-adios2/build/bin/thesis_eval_heatTransfer_quer
 # ---------------- Cluster Setup ----------------------------------------
 # . /opt/spack/main/env.sh
 . mein-spack/share/spack/setup-env.sh 
-. /home/urz/kduwe/mein-julea/scripts/environment.sh
-# echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
 spack load mpi
+# echo ". /home/urz/kduwe/mein-julea/scripts/environment.sh"
+. /home/urz/kduwe/mein-julea/scripts/environment.sh
 spack load mysql
 # spack load adios2
 
@@ -52,9 +52,9 @@ do
 	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
-	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-271-1node-ceph-write-${SLURM_JOBID}.tsv"
-	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-271-1node-ceph-read-${SLURM_JOBID}.tsv"
-	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/${engine}/${engine}-271-1node-ceph-query-${SLURM_JOBID}.tsv"
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-ceph-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-ceph-read-${SLURM_JOBID}.tsv"
+	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-271-1node-ceph-query-${SLURM_JOBID}.tsv"
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
 	# configFile="mein-adios-fork/examples/heatTransfer/heat_${engine}_sync.xml"
