@@ -9,10 +9,11 @@
 # processes="4 12 24 48 96 192"
 # processes="4 12 24 48 96"
 processes="1 3 6 12 24"
-sizes="1024 2048 4096"
+sizes="1024 2048"
 engines="julea-db"
 iterations=10
-steps=100
+steps=50
+# steps=100
 
 htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_write_adios2"
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
