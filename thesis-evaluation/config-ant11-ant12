@@ -25,4 +25,4 @@ path=/tmp/julea-424242/leveldb
 [db]
 backend=mysql
 component=client
-path=ant10:julea_db:julea_user:julea_pw
+path=ant11:julea_db:julea_user:julea_pw
