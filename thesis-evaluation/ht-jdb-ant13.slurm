@@ -2,7 +2,7 @@
 
 #SBATCH -N 1 --ntasks-per-node=24
 #SBATCH --partition=parcio
-#SBATCH --nodelist=ant19 --exclusive
+#SBATCH --nodelist=ant13 --exclusive
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
 # ---------------------------------------- HEATTRANSFER PARAMS ----------------------------------------
@@ -31,12 +31,10 @@ spack load mysql
 # spack load adios2
 
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
-# export JULEA_CONFIG="~/.config/julea/ant19-mariadb"
-# export JULEA_CONFIG="/home/urz/kduwe/SlurmScripts/thesis-evaluation/ant19-mariadb"
-# echo "Exported JULEA config: /home/urz/kduwe/SlurmScripts/thesis-evaluation/ant19-mariadb"
 
-export JULEA_CONFIG="/home/urz/kduwe/.config/julea/test-1-server"
-echo "Exported JULEA config: /home/urz/kduwe/.config/julea/test-1-server"
+# export JULEA_CONFIG="/home/urz/kduwe/.config/julea/test-1-server"
+export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant11-db-mysql"
+echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant11-db-mysql"
 
 # ------- Start Benchmark ---------------
 for engine in $engines
