@@ -15,7 +15,8 @@ steps=100
 
 htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_write_adios2"
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
-htQueryBin="/home/urz/kduwe/spack-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
+htAdiosQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
+htDAIQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryDAI"
 
 # osServer="/tmp/julea-551823/posix"
 # kvServer="/tmp/julea-551823/leveldb"
@@ -123,12 +124,38 @@ do
 				for (( c=1; c<=10; c++ ))
 				do  
 					echo "# Iteration = $c" >> "${queryFile}"
-    				echo mpirun -n 1 $htQueryBin $configFile $inputOutput 1 1 
-    				mpirun -n 1 $htQueryBin $configFile $inputOutput 1 1 >> "${queryFile}"
+    				echo mpirun -n 1 $htAdiosQueryBin $configFile $inputOutput 1 1 
+    				mpirun -n 1 $htAdiosQueryBin $configFile $inputOutput 1 1 >> "${queryFile}"
 				done
     			echo "finished querying"
 
 				echo "# File Size:" >> "${queryFile}"
+
+				# ls -lah $osServer >> "${queryFile}"
+				# ls -lah $kvServer >> "${queryFile}"
+				# ls -lah $dbServer >> "${queryFile}"
+
+			fi
+
+
+    		# ---------------------------------------- Query DAI ----------------------------------------
+			if [ "${proc}" == 24 ];
+    		then
+
+    			echo "# --- QueryDAI time in mikroseconds ---" >> "${queryDAIFile}"
+    			echo "# MPI_Comm_size: 1" >> "${queryDAIFile}"
+    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryDAIFile}"
+    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryDAIFile}"
+
+				for (( c=1; c<=10; c++ ))
+				do  
+					echo "# Iteration = $c" >> "${queryDAIFile}"
+    				echo mpirun -n 1 $htDAIQueryBin $configFile $inputOutput 1 1 
+    				mpirun -n 1 $htDAIQueryBin $configFile $inputOutput 1 1 >> "${queryDAIFile}"
+				done
+    			echo "finished querying"
+
+				echo "# File Size:" >> "${queryDAIFile}"
 
 				# ls -lah $osServer >> "${queryFile}"
 				# ls -lah $kvServer >> "${queryFile}"
