@@ -35,8 +35,8 @@ export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 # export JULEA_CONFIG="/home/urz/kduwe/SlurmScripts/thesis-evaluation/ant19-mariadb"
 # echo "Exported JULEA config: /home/urz/kduwe/SlurmScripts/thesis-evaluation/ant19-mariadb"
 
-export JULEA_CONFIG="/home/urz/kduwe/.config/julea/config-ant11-ant12"
-echo "Exported JULEA config: /home/urz/kduwe/.config/julea/config-ant11-ant12"
+export JULEA_CONFIG="/home/urz/kduwe/.config/julea/test-1-server"
+echo "Exported JULEA config: /home/urz/kduwe/.config/julea/test-1-server"
 
 # ------- Start Benchmark ---------------
 for engine in $engines
