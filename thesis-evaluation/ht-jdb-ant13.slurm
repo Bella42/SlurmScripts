@@ -30,6 +30,8 @@ spack load mpi
 spack load mysql
 # spack load adios2
 
+sleep 4m
+
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
 # export JULEA_CONFIG="/home/urz/kduwe/.config/julea/test-1-server"
