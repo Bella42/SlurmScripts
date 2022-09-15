@@ -17,8 +17,8 @@ mkdir -p /tmp/kduwe/localdb
 singularity run --writable-tmpfs -B /tmp/kduwe/localdb:/var/lib/mysql --env MARIADB_RANDOM_ROOT_PASSWORD=yes --env MARIADB_DATABASE=julea_db --env MARIADB_USER=julea_user --env MARIADB_PASSWORD=julea_pw  mariadb.sif &
 sleep 1m
 
-export JULEA_CONFIG="~/.config/julea/config-ant11-ant12"
-echo "Exported JULEA config: ~/.config/julea/config-ant11-ant12"
+export JULEA_CONFIG="/home/urz/kduwe/.config/julea/config-ant11-ant12"
+echo "Exported JULEA config: /home/urz/kduwe/.config/julea/config-ant11-ant12"
 
 julea-server &
 
