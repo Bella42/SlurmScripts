@@ -15,7 +15,7 @@ steps=100
 
 htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_write_adios2"
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
-htAdiosQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
+htADIOSQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
 htDAIQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryDAI"
 
 # osServer="/tmp/julea-551823/posix"
@@ -51,7 +51,9 @@ do
 	# ---------------------------------------- Output Files ----------------------------------------
 	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-1node-$(hostname)-write-${SLURM_JOBID}.tsv"
 	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-1node-$(hostname)-read-${SLURM_JOBID}.tsv"
-	queryFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-1node-$(hostname)-query-${SLURM_JOBID}.tsv"
+	queryADIOSFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-1node-$(hostname)-query-${SLURM_JOBID}.tsv"
+	queryDAIFile="/home/urz/kduwe/thesis_eval/results-ht-q/kv/${engine}-1node-$(hostname)-query-dai-${SLURM_JOBID}.tsv"
+
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
 	# configFile="mein-adios-fork/examples/heatTransfer/heat_${engine}_sync.xml"
@@ -116,20 +118,20 @@ do
 			if [ "${proc}" == 24 ];
     		then
 
-    			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryFile}"
-    			echo "# MPI_Comm_size: 1" >> "${queryFile}"
-    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryFile}"
-    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryFile}"
+    			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
+    			echo "# MPI_Comm_size: 1" >> "${queryADIOSFile}"
+    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryADIOSFile}"
+    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryADIOSFile}"
 
 				for (( c=1; c<=10; c++ ))
 				do  
-					echo "# Iteration = $c" >> "${queryFile}"
-    				echo mpirun -n 1 $htAdiosQueryBin $configFile $inputOutput 1 1 
-    				mpirun -n 1 $htAdiosQueryBin $configFile $inputOutput 1 1 >> "${queryFile}"
+					echo "# Iteration = $c" >> "${queryADIOSFile}"
+    				echo mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 
+    				mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 >> "${queryADIOSFile}"
 				done
     			echo "finished querying"
 
-				echo "# File Size:" >> "${queryFile}"
+				echo "# File Size:" >> "${queryADIOSFile}"
 
 				# ls -lah $osServer >> "${queryFile}"
 				# ls -lah $kvServer >> "${queryFile}"
