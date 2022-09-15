@@ -22,7 +22,7 @@ echo "Exported JULEA config: ~/.config/julea/config-ant11-ant12"
 
 julea-server &
 
-sleep 10m
+sleep 200m
 
 killall julea-server
 rm -rf /tmp/julea-424242
