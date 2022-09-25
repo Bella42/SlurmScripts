@@ -76,7 +76,7 @@ do
 
 			# julea-server &
             srun -w ant[17-18] rm -rf /tmp/kduwe/julea
-            srun -w ant[17-18] --exact julea-server &
+            srun -w ant[17-18] --exact --overlap julea-server &
             sleep 20s
 
 
