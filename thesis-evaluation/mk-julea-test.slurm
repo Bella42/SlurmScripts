@@ -11,6 +11,8 @@
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant17-18"
 
+. mein-spack/share/spack/setup-env.sh 
+spack load mpi
 # . julea/scripts/environment.sh
 . /home/urz/kduwe/mein-julea/scripts/environment.sh
 
