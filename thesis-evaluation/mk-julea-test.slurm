@@ -6,7 +6,9 @@
 #SBATCH --output=job.out
 #SBATCH --error=job.err
 
-export G_MESSAGES_DEBUG=all
+# export G_MESSAGES_DEBUG=all
+
+export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
 # . julea/scripts/environment.sh
 . /home/urz/kduwe/mein-julea/scripts/environment.sh
