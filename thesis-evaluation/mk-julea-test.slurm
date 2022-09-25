@@ -19,6 +19,6 @@ srun -w ant[17-18] --exact ps xww
 # make -C julea/example
 make -C . /home/urz/kduwe/mein-julea/example
 # ./julea/example/hello-world
-. /home/urz/kduwe/mein-julea/hello-world
+. /home/urz/kduwe/mein-julea/example/hello-world
 
 srun -w ant[17-18] --exact killall -v julea-server
