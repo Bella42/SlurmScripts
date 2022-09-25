@@ -9,6 +9,7 @@
 # export G_MESSAGES_DEBUG=all
 
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
+export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant17-18"
 
 # . julea/scripts/environment.sh
 . /home/urz/kduwe/mein-julea/scripts/environment.sh
