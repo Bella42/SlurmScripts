@@ -38,7 +38,7 @@ echo "Exported JULEA config: ~/.config/julea/$(hostname)-db-mysql"
 
 julea-server &
 
-sleep 400m
+sleep 600m
 
 killall julea-server
 rm -rf /tmp/julea-424242
