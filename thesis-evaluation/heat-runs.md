@@ -32,6 +32,8 @@ Submitted batch job 588223 -->
 588383    parcio bp3-4nod    kduwe PD       0:00      4 (ReqNodeNotAvail, UnavailableNodes:ant[17-20])
 588381    parcio bp5-4nod    kduwe  R    2:50:27      4 ant[17-20]
 
+595684    parcio ht-jdb-4    kduwe  R       1:47      4 ant[15-18]
+
 #### 8 Nodes
 
 sbatch SlurmScripts/thesis-evaluation/bp-engines-8nodes.slurm 
