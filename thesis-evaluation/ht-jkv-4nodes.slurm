@@ -122,7 +122,7 @@ do
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ];
+			if [ "${proc}" == 96 ];
     		then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
