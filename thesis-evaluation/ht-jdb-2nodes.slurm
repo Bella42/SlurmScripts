@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#SBATCH -N 8 --ntasks-per-node=24
+#SBATCH -N 2 --ntasks-per-node=24
 #SBATCH --partition=parcio
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
 # ---------------------------------------- HEATTRANSFER PARAMS ----------------------------------------
 # processes="1 3 6 12 24"
+processes="2 6 12 24 48"
 # processes="4 12 24 48 96"
-processes="8 24 48 96 192"
 sizes="1024"
 engines="julea-db"
 iterations=10
@@ -18,10 +18,6 @@ htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_writ
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
 htADIOSQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
 htDAIQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryDAI"
-
-# osServer="/tmp/julea-551823/posix"
-# kvServer="/tmp/julea-551823/leveldb"
-# dbServer="/tmp/kduwe/localdb:/var/lib/mysql"
 
 # ---------------- Cluster Setup ----------------------------------------
 # . /opt/spack/main/env.sh
@@ -48,15 +44,15 @@ do
 	# N=(1 3 3 4 6)
 	# M=(1 1 2 3 4)
 
-    N=(4 6 8 16 16)
-	M=(2 4 6 6 12)
+    N=(2 3 4 6 8)
+	M=(1 2 3 4 6)
 	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
-	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-8node-$(hostname)-write-${SLURM_JOBID}.tsv"
-	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-8node-$(hostname)-read-${SLURM_JOBID}.tsv"
-	queryADIOSFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-8node-$(hostname)-query-${SLURM_JOBID}.tsv"
-	queryDAIFile="/home/urz/kduwe/thesis_eval/results-ht-q/kv/${engine}-8node-$(hostname)-query-dai-${SLURM_JOBID}.tsv"
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-read-${SLURM_JOBID}.tsv"
+	queryADIOSFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-query-${SLURM_JOBID}.tsv"
+	queryDAIFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-query-dai-${SLURM_JOBID}.tsv"
 
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
@@ -64,7 +60,7 @@ do
     configFile="/home/urz/kduwe/julea-adios2/examples/thesis/heatTransfer/heat_${engine}.xml"
 
 	# Will be deleted at the end!
-	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-8node.bp"
+	inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-2node.bp"
 	analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-analysis-output.bp"
 
     for proc in $processes
@@ -116,36 +112,8 @@ do
 			# ls -lah $kvServer >> "${readFile}"
 			# ls -lah $dbServer >> "${readFile}"
 
-    
-    		# ---------------------------------------- Query ADIOS ----------------------------------------
-
-			if [ "${proc}" == 24 ];
-    		then
-
-    			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
-    			echo "# MPI_Comm_size: 1" >> "${queryADIOSFile}"
-    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryADIOSFile}"
-    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryADIOSFile}"
-
-				for (( c=1; c<=10; c++ ))
-				do  
-					echo "# Iteration = $c" >> "${queryADIOSFile}"
-    				echo mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 
-    				mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 >> "${queryADIOSFile}"
-				done
-    			echo "finished querying"
-
-				echo "# File Size:" >> "${queryADIOSFile}"
-
-				# ls -lah $osServer >> "${queryFile}"
-				# ls -lah $kvServer >> "${queryFile}"
-				# ls -lah $dbServer >> "${queryFile}"
-
-			fi
-
-
-    		# ---------------------------------------- Query DAI ----------------------------------------
-			if [ "${proc}" == 24 ];
+            # ---------------------------------------- Query DAI ----------------------------------------
+			if [ "${proc}" == 48 ];
     		then
 
     			echo "# --- QueryDAI time in mikroseconds ---" >> "${queryDAIFile}"
@@ -169,6 +137,33 @@ do
 
 			fi
 
+    		# ---------------------------------------- Query ADIOS ----------------------------------------
+
+			if [ "${proc}" == 48 ];
+    		then
+
+    			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
+    			echo "# MPI_Comm_size: 1" >> "${queryADIOSFile}"
+    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryADIOSFile}"
+    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryADIOSFile}"
+
+				for (( c=1; c<=1; c++ ))
+				do  
+					echo "# Iteration = $c" >> "${queryADIOSFile}"
+    				echo mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 
+    				mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 >> "${queryADIOSFile}"
+				done
+    			echo "finished querying"
+
+				echo "# File Size:" >> "${queryADIOSFile}"
+
+				# ls -lah $osServer >> "${queryFile}"
+				# ls -lah $kvServer >> "${queryFile}"
+				# ls -lah $dbServer >> "${queryFile}"
+
+			fi
+
+
     		# ---------------------------------------- Clean Up ----------------------------------------
 			# killall julea-server
             # rm -rf /tmp/julea-551823
@@ -176,7 +171,7 @@ do
             # "/home/urz/kduwe/ht-output/"
     		echo "rm -rf ${inputOutput}"
             rm -rf ${inputOutput}
-    		# rm -rf /mnt/lustre/duwe/heat-bp4-8nodes.bp*
+    		# rm -rf /mnt/lustre/duwe/heat-bp4-2nodes.bp*
     
     		# echo "rm -rf ${analysisOutput}"
     		# rm -rf ${analysisOutput}
