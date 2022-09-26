@@ -130,7 +130,7 @@ do
     			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryADIOSFile}"
     			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryADIOSFile}"
 
-				for (( c=1; c<=10; c++ ))
+				for (( c=1; c<=1; c++ ))
 				do  
 					echo "# Iteration = $c" >> "${queryADIOSFile}"
     				echo mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 

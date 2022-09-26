@@ -115,35 +115,7 @@ do
 			# ls -lah $kvServer >> "${readFile}"
 			# ls -lah $dbServer >> "${readFile}"
 
-    
-    		# ---------------------------------------- Query ADIOS ----------------------------------------
-
-			if [ "${proc}" == 96 ];
-    		then
-
-    			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
-    			echo "# MPI_Comm_size: 1" >> "${queryADIOSFile}"
-    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryADIOSFile}"
-    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryADIOSFile}"
-
-				for (( c=1; c<=10; c++ ))
-				do  
-					echo "# Iteration = $c" >> "${queryADIOSFile}"
-    				echo mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 
-    				mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 >> "${queryADIOSFile}"
-				done
-    			echo "finished querying"
-
-				echo "# File Size:" >> "${queryADIOSFile}"
-
-				# ls -lah $osServer >> "${queryFile}"
-				# ls -lah $kvServer >> "${queryFile}"
-				# ls -lah $dbServer >> "${queryFile}"
-
-			fi
-
-
-    		# ---------------------------------------- Query DAI ----------------------------------------
+            # ---------------------------------------- Query DAI ----------------------------------------
 			if [ "${proc}" == 96 ];
     		then
 
@@ -167,6 +139,33 @@ do
 				# ls -lah $dbServer >> "${queryFile}"
 
 			fi
+
+    		# ---------------------------------------- Query ADIOS ----------------------------------------
+
+			if [ "${proc}" == 96 ];
+    		then
+
+    			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
+    			echo "# MPI_Comm_size: 1" >> "${queryADIOSFile}"
+    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryADIOSFile}"
+    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryADIOSFile}"
+
+				for (( c=1; c<=1; c++ ))
+				do  
+					echo "# Iteration = $c" >> "${queryADIOSFile}"
+    				echo mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 
+    				mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 >> "${queryADIOSFile}"
+				done
+    			echo "finished querying"
+
+				echo "# File Size:" >> "${queryADIOSFile}"
+
+				# ls -lah $osServer >> "${queryFile}"
+				# ls -lah $kvServer >> "${queryFile}"
+				# ls -lah $dbServer >> "${queryFile}"
+
+			fi
+
 
     		# ---------------------------------------- Clean Up ----------------------------------------
 			# killall julea-server
