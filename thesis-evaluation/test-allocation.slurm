@@ -10,3 +10,4 @@
 
 srun hostname
 srun nproc
+sleep 10m
