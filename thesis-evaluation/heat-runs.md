@@ -37,6 +37,12 @@ Submitted batch job 588223 -->
 
 595685    parcio ht-jdb-4    kduwe  R       0:43      4 ant[15-18]
 
+595686    parcio ht-jkv-4    kduwe PD       0:00      4 (Resources)
+595688    parcio ht-jdb-2    kduwe PD       0:00      2 (ReqNodeNotAvail, UnavailableNodes:ant[15-16])
+595689    parcio ht-jkv-2    kduwe PD       0:00      2 (ReqNodeNotAvail, UnavailableNodes:ant[15-16])
+595685    parcio ht-jdb-4    kduwe  R    3:06:00      4 ant[15-18]
+
+
 #### 8 Nodes
 
 sbatch SlurmScripts/thesis-evaluation/bp-engines-8nodes.slurm 
