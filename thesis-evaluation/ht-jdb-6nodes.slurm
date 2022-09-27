@@ -118,10 +118,36 @@ do
 			# ls -lah $dbServer >> "${readFile}"
 			# ls -lah $dbServer >> "${readFile}"
 
+
+            		# # ---------------------------------------- Query DAI ----------------------------------------
+			if [ "${proc}" == 144 ];
+    		then
+
+    			echo "# --- QueryDAI time in mikroseconds ---" >> "${queryDAIFile}"
+    			echo "# MPI_Comm_size: 1" >> "${queryDAIFile}"
+    			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryDAIFile}"
+    			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryDAIFile}"
+
+				for (( c=1; c<=10; c++ ))
+				do  
+					echo "# Iteration = $c" >> "${queryDAIFile}"
+    				echo mpirun -n 1 $htDAIQueryBin $configFile $inputOutput 1 1 
+    				mpirun -n 1 $htDAIQueryBin $configFile $inputOutput 1 1 >> "${queryDAIFile}"
+				done
+    			echo "finished querying"
+
+				echo "# File Size:" >> "${queryDAIFile}"
+
+				# ls -lah $osServer >> "${queryFile}"
+				# ls -lah $dbServer >> "${queryFile}"
+				# ls -lah $dbServer >> "${queryFile}"
+
+			fi
+
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ];
+			if [ "${proc}" == 144 ];
     		then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
@@ -129,7 +155,7 @@ do
     			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryADIOSFile}"
     			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryADIOSFile}"
 
-				for (( c=1; c<=10; c++ ))
+				for (( c=1; c<=1; c++ ))
 				do  
 					echo "# Iteration = $c" >> "${queryADIOSFile}"
     				echo mpirun -n 1 $htADIOSQueryBin $configFile $inputOutput 1 1 
@@ -146,30 +172,7 @@ do
 			fi
 
 
-    		# # ---------------------------------------- Query DAI ----------------------------------------
-			# if [ "${proc}" == 24 ];
-    		# then
 
-    		# 	echo "# --- QueryDAI time in mikroseconds ---" >> "${queryDAIFile}"
-    		# 	echo "# MPI_Comm_size: 1" >> "${queryDAIFile}"
-    		# 	echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryDAIFile}"
-    		# 	echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryDAIFile}"
-
-			# 	for (( c=1; c<=10; c++ ))
-			# 	do  
-			# 		echo "# Iteration = $c" >> "${queryDAIFile}"
-    		# 		echo mpirun -n 1 $htDAIQueryBin $configFile $inputOutput 1 1 
-    		# 		mpirun -n 1 $htDAIQueryBin $configFile $inputOutput 1 1 >> "${queryDAIFile}"
-			# 	done
-    		# 	echo "finished querying"
-
-			# 	echo "# File Size:" >> "${queryDAIFile}"
-
-			# 	# ls -lah $osServer >> "${queryFile}"
-			# 	# ls -lah $dbServer >> "${queryFile}"
-			# 	# ls -lah $dbServer >> "${queryFile}"
-
-			# fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------
 			# killall julea-server
