@@ -9,7 +9,7 @@
 # processes="4 12 24 48 96"
 processes="6 18 36 72 144"
 sizes="1024"
-engines="julea-kv"
+engines="julea-db"
 iterations=10
 steps=100
 # steps=100
@@ -20,7 +20,7 @@ htADIOSQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer
 htDAIQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryDAI"
 
 # osServer="/tmp/julea-551823/posix"
-# kvServer="/tmp/julea-551823/leveldb"
+# dbServer="/tmp/julea-551823/leveldb"
 # dbServer="/tmp/kduwe/localdb:/var/lib/mysql"
 
 # ---------------- Cluster Setup ----------------------------------------
@@ -37,8 +37,10 @@ sleep 1m
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
 # export JULEA_CONFIG="/home/urz/kduwe/.config/julea/test-1-server"
-export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant10-kv-leveldb"
-echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant10-kv-leveldb"
+# export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant10-db-leveldb"
+# echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant10-db-leveldb"
+export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant10-db-mysql"
+echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant10-db-mysql"
 
 # ------- Start Benchmark ---------------
 for engine in $engines
@@ -53,10 +55,10 @@ do
 	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
-	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/kv/${engine}-6node-$(hostname)-write-${SLURM_JOBID}.tsv"
-	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/kv/${engine}-6node-$(hostname)-read-${SLURM_JOBID}.tsv"
-	queryADIOSFile="/home/urz/kduwe/thesis_eval/results-ht-q/kv/${engine}-6node-$(hostname)-query-${SLURM_JOBID}.tsv"
-	queryDAIFile="/home/urz/kduwe/thesis_eval/results-ht-q/kv/${engine}-6node-$(hostname)-query-dai-${SLURM_JOBID}.tsv"
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-6node-$(hostname)-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-6node-$(hostname)-read-${SLURM_JOBID}.tsv"
+	queryADIOSFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-6node-$(hostname)-query-${SLURM_JOBID}.tsv"
+	queryDAIFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-6node-$(hostname)-query-dai-${SLURM_JOBID}.tsv"
 
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
@@ -88,7 +90,7 @@ do
 			echo "# File Size:" >> "${writeFile}"
 	
 			# ls -lah $osServer >> "${writeFile}"
-			# ls -lah $kvServer >> "${writeFile}"
+			# ls -lah $dbServer >> "${writeFile}"
 			# ls -lah $dbServer >> "${writeFile}"
 
     
@@ -113,7 +115,7 @@ do
 			echo "# File Size:" >> "${readFile}"
 	
 			# ls -lah $osServer >> "${readFile}"
-			# ls -lah $kvServer >> "${readFile}"
+			# ls -lah $dbServer >> "${readFile}"
 			# ls -lah $dbServer >> "${readFile}"
 
     
@@ -138,7 +140,7 @@ do
 				echo "# File Size:" >> "${queryADIOSFile}"
 
 				# ls -lah $osServer >> "${queryFile}"
-				# ls -lah $kvServer >> "${queryFile}"
+				# ls -lah $dbServer >> "${queryFile}"
 				# ls -lah $dbServer >> "${queryFile}"
 
 			fi
@@ -164,7 +166,7 @@ do
 			# 	echo "# File Size:" >> "${queryDAIFile}"
 
 			# 	# ls -lah $osServer >> "${queryFile}"
-			# 	# ls -lah $kvServer >> "${queryFile}"
+			# 	# ls -lah $dbServer >> "${queryFile}"
 			# 	# ls -lah $dbServer >> "${queryFile}"
 
 			# fi
