@@ -43,6 +43,7 @@ Submitted batch job 588223 -->
 - 2
 - 4 nodes: 595768
 - 6
+
 ------------------------------
 <!-- Note: abgebrochen, weil query zu lange dauert; schreiben lesen daten sind ok; Reihenfolge getauscht auf eine Iteration zurückgeschraubt -->
 <!-- 595684    parcio ht-jdb-4    kduwe  R       1:47      4 ant[15-18] -->
@@ -55,6 +56,9 @@ Submitted batch job 588223 -->
 
 sbatch -p parcio -w ant[17-20] --exclusive --mem=0 SlurmScripts/thesis-evaluation/ht-jkv-4nodes.slurm 
 Submitted batch job 595768
+
+<!-- -> error for larges process config: potentially because julea-server was full? 595769    parcio ht-jkv-6    kduwe  R      27:42      6 ant[15-20] -->
+
 
 
 #### 8 Nodes
