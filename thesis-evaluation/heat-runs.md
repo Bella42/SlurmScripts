@@ -41,8 +41,13 @@ Submitted batch job 588223 -->
 ##### KV
 - 1
 - 2
+sbatch -p parcio -w ant[19-20] --exclusive --mem=0 SlurmScripts/thesis-evaluation/ht-jkv-2nodes.slurm 
+Submitted batch job 595902
+
 - 4 nodes: 595768
 - 6
+595903    parcio ht-jkv-6    kduwe  R    1:47:16      6 ant[15-20]
+
 
 ------------------------------
 <!-- Note: abgebrochen, weil query zu lange dauert; schreiben lesen daten sind ok; Reihenfolge getauscht auf eine Iteration zurückgeschraubt -->
