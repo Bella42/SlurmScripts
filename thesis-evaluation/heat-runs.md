@@ -32,15 +32,29 @@ Submitted batch job 588223 -->
 588383    parcio bp3-4nod    kduwe PD       0:00      4 (ReqNodeNotAvail, UnavailableNodes:ant[17-20])
 588381    parcio bp5-4nod    kduwe  R    2:50:27      4 ant[17-20]
 
+
+##### DB
+- 
+- 4 nodes: 595685
+- 6 nodes: 595702
+
+##### KV
+- 1
+- 2
+- 4 nodes: 595768
+- 6
+------------------------------
 <!-- Note: abgebrochen, weil query zu lange dauert; schreiben lesen daten sind ok; Reihenfolge getauscht auf eine Iteration zurückgeschraubt -->
 <!-- 595684    parcio ht-jdb-4    kduwe  R       1:47      4 ant[15-18] -->
-
 595685    parcio ht-jdb-4    kduwe  R       0:43      4 ant[15-18]
 
-595686    parcio ht-jkv-4    kduwe PD       0:00      4 (Resources)
+<!-- 595686    parcio ht-jkv-4    kduwe PD       0:00      4 (Resources) -->
 595688    parcio ht-jdb-2    kduwe PD       0:00      2 (ReqNodeNotAvail, UnavailableNodes:ant[15-16])
-595689    parcio ht-jkv-2    kduwe PD       0:00      2 (ReqNodeNotAvail, UnavailableNodes:ant[15-16])
+<!-- 595689    parcio ht-jkv-2    kduwe PD       0:00      2 (ReqNodeNotAvail, UnavailableNodes:ant[15-16]) -->
 595685    parcio ht-jdb-4    kduwe  R    3:06:00      4 ant[15-18]
+
+sbatch -p parcio -w ant[17-20] --exclusive --mem=0 SlurmScripts/thesis-evaluation/ht-jkv-4nodes.slurm 
+Submitted batch job 595768
 
 
 #### 8 Nodes
