@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -N 4 --ntasks-per-node=24
+#SBATCH -N 6 --ntasks-per-node=24
 #SBATCH --partition=parcio
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
