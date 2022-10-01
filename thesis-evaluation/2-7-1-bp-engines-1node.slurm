@@ -2,14 +2,14 @@
 
 #SBATCH -N 1 --ntasks-per-node=24
 #SBATCH --partition=parcio
-#SBATCH --nodelist=ant20
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
 # ---------------------------------------- HEATTRANSFER PARAMS ----------------------------------------
 # processes="4 12 24 48 96 192"
 # processes="4 12 24 48 96"
 processes="1 3 6 12 24"
-sizes="1024 2048 4096"
+sizes="1024"
+# sizes="1024 2048 4096"
 
 engines="bp3 bp4"
 
@@ -115,7 +115,7 @@ do
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ] && [ "${size}" == 4096 ];
+			if [ "${proc}" == 24 ];
     		then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryFile}"
@@ -123,7 +123,7 @@ do
     			echo -e "# N \t M \t nx \t ny \t steps \t iterations" >> "${queryFile}"
     			echo -e "${N[$i]} \t ${M[$i]} \t $size \t $size \t $steps \t $iterations" >> "${queryFile}"
 
-				for (( c=1; c<=10; c++ ))
+				for (( c=1; c<=1; c++ ))
 				do  
 					echo "# Iteration = $c" >> "${queryFile}"
     				echo mpirun -n 1 $htQueryBin $configFile $inputOutput 1 1 
