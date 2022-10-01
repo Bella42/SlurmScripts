@@ -5,14 +5,16 @@
 
 
 ##### DB
+- 1 node:  596328
 - 2 nodes: 596318
-- 4 nodes: 596326
+- 4 nodes: 596327
 - 6 nodes: 595702
 
 <!-- - 1 node:  596319 -->
 <!-- -> query fehlt inhalt -->
-<!-- - 4 nodes: 595685 -->
-<!-- -> letzter dai query fehlt -->
+<!-- - 4 nodes: 
+595685 -> letzter dai query fehlt -->
+<!-- 596326 -> wrong config -->
 
 ##### KV
 - 1 node:  596320
