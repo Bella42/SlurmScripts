@@ -3,27 +3,7 @@
 ## HeatTransfer
 
 
-
-##### DB
-- 1 node:  596328
-- 2 nodes: 596318
-- 4 nodes: 596327
-- 6 nodes: 595702
-
-<!-- - 1 node:  596319 -->
-<!-- -> query fehlt inhalt -->
-<!-- - 4 nodes: 
-595685 -> letzter dai query fehlt -->
-<!-- 596326 -> wrong config -->
-
-##### KV
-- 1 node:  596320
-- 2 nodes: 595902
-- 4 nodes: 595768
-- 6 nodes: 595903
-
-
-##### BP
+#### BP 283
 - 1 node: 588407 (all)
 - 2 nodes: 588406 (all)
 - 4 nodes:
@@ -32,6 +12,53 @@
     - BP5: 588381
 - 6 nodes:
 - 8 nodes: 588408 (all)
+
+
+#### BP 271
+- 1 node:  
+    - BP3:
+    - BP4:
+- 2 nodes: 
+    - BP3:
+    - BP4:
+- 4 nodes: 
+    - BP3:
+    - BP4:
+- 6 nodes: 
+    - BP3:
+    - BP4:
+
+
+#### 2 JULEA Servers on ant10/11
+<!-- neue ht messungen 271 -->
+<!-- https://github.com/julea-io/adios2/commit/2c6b0aa13f1b36329746d607a816441b7521e4e5 -->
+
+
+
+#### 1 JULEA Server on ant11
+<!-- -----------------  nur ein juleaserver auf ant11 -->
+<!-- alte ht messungen 271 -> zuviel output beim read -->
+<!-- https://github.com/julea-io/adios2/commit/9b807d0c2acb4773b1d1dec1ee16b41cadf29bd2 -->
+
+
+##### KV
+- 1 node:  596320
+- 2 nodes: 595902
+- 4 nodes: 595768
+- 6 nodes: 595903
+
+##### DB
+- 1 node:  596328
+- 2 nodes: 596318
+- 4 nodes: 596328
+- 6 nodes: 595702
+
+<!-- - 1 node:  596319 -->
+<!-- -> query fehlt inhalt -->
+<!-- - 4 nodes: 
+596327 -> letzer query fehlt
+595685 -> letzter dai query fehlt -->
+<!-- 596326 -> wrong config -->
 
 
 
