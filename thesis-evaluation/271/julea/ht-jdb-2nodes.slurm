@@ -1,25 +1,23 @@
 #!/bin/bash
 
-#SBATCH -N 4 --ntasks-per-node=24
+#SBATCH -N 2 --ntasks-per-node=24
 #SBATCH --partition=parcio
 #SBATCH --error=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.err --output=/home/urz/kduwe/thesis_eval/output/heattransfer-%j.out
 
 # ---------------------------------------- HEATTRANSFER PARAMS ----------------------------------------
 # processes="1 3 6 12 24"
-processes="4 12 24 48 96"
+processes="2 6 12 24 48"
+# processes="4 12 24 48 96"
 sizes="1024"
 engines="julea-db"
 iterations=10
 steps=100
+# steps=100
 
 htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_write_adios2"
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
 htADIOSQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
 htDAIQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryDAI"
-
-# osServer="/tmp/julea-551823/posix"
-# kvServer="/tmp/julea-551823/leveldb"
-# dbServer="/tmp/kduwe/localdb:/var/lib/mysql"
 
 # ---------------- Cluster Setup ----------------------------------------
 # . /opt/spack/main/env.sh
@@ -46,28 +44,30 @@ do
 	# N=(1 3 3 4 6)
 	# M=(1 1 2 3 4)
 
-    N=(2 4 6 8 16)
-	M=(2 3 4 6 6)
+    N=(2 3 4 6 8)
+	M=(1 2 3 4 6)
 	i=0
 
 	# ---------------------------------------- Output Files ----------------------------------------
-	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-4node-$(hostname)-write-${SLURM_JOBID}.tsv"
-	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-4node-$(hostname)-read-${SLURM_JOBID}.tsv"
-	queryADIOSFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-4node-$(hostname)-query-${SLURM_JOBID}.tsv"
-	queryDAIFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-4node-$(hostname)-query-dai-${SLURM_JOBID}.tsv"
+	writeFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-write-${SLURM_JOBID}.tsv"
+	readFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-read-${SLURM_JOBID}.tsv"
+	queryADIOSFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-query-${SLURM_JOBID}.tsv"
+	queryDAIFile="/home/urz/kduwe/thesis_eval/results-ht-q/db/${engine}-2node-$(hostname)-query-dai-${SLURM_JOBID}.tsv"
 
 
 	# configFile="../examples/julea_EuroSys2021/heatTransfer/heat_${engine}_sync.xml"
 	# configFile="mein-adios-fork/examples/heatTransfer/heat_${engine}_sync.xml"
     configFile="/home/urz/kduwe/julea-adios2/examples/thesis/heatTransfer/heat_${engine}.xml"
 
-    # inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-4node.bp"
+	# Will be deleted at the end!
+	# inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-2node.bp"
 	# analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-analysis-output.bp"
 
     for proc in $processes
     do
-	    # Will be deleted at the end!
-	    inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-${proc}-4node.bp"
+
+       	# Will be deleted at the end!
+        inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-${proc}-2node.bp"
 	    analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-${proc}-analysis-output.bp"
     	for size in $sizes
     	do
@@ -79,15 +79,21 @@ do
     		echo "# x = $proc, size = $size"
     		echo "# engine = ${engine} "
     
+			# mpirun -n 24 /tmp/kduwe/spack-stage/spack-stage-adios2-2.8.3-4fsljmie2zepgprmdtx6if2ogvi7pru7/spack-build-4fsljmi/bin/heatTransfer_write_adios2 mein-adios-fork/examples/heatTransfer/heat_bp5_sync.xml ht-output/test-bp5-4096-100.bp 6 4 4096 4096 10 10
+
+
     		# echo mpirun -n $proc -ppn $(($proc/4)) ./bin/heatTransfer_write_adios2 $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations 
     		echo mpirun -n $proc -ppn $(($proc/1)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations ${engine}
     		mpirun -n $proc -ppn $(($proc/1)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]}  $size $size $steps $iterations ${engine} >> "${writeFile}"
     		echo "finished writing"
 
-			# echo "# File Size:" >> "${writeFile}"
+			echo "# File Size:" >> "${writeFile}"
+	
 			# ls -lah $osServer >> "${writeFile}"
 			# ls -lah $kvServer >> "${writeFile}"
 			# ls -lah $dbServer >> "${writeFile}"
+
+    
     		# srun sudo /home/hr/drop-caches.sh
     
     		# ---------------------------------------- Reading ----------------------------------------
@@ -106,13 +112,14 @@ do
     		echo "finished reading"
 
 
-			# echo "# File Size:" >> "${readFile}"
+			echo "# File Size:" >> "${readFile}"
+	
 			# ls -lah $osServer >> "${readFile}"
 			# ls -lah $kvServer >> "${readFile}"
 			# ls -lah $dbServer >> "${readFile}"
 
             # ---------------------------------------- Query DAI ----------------------------------------
-			if [ "${proc}" == 96 ];
+			if [ "${proc}" == 48 ];
     		then
 
     			echo "# --- QueryDAI time in mikroseconds ---" >> "${queryDAIFile}"
@@ -128,7 +135,8 @@ do
 				done
     			echo "finished querying"
 
-				# echo "# File Size:" >> "${queryDAIFile}"
+				echo "# File Size:" >> "${queryDAIFile}"
+
 				# ls -lah $osServer >> "${queryFile}"
 				# ls -lah $kvServer >> "${queryFile}"
 				# ls -lah $dbServer >> "${queryFile}"
@@ -137,7 +145,7 @@ do
 
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 96 ];
+			if [ "${proc}" == 48 ];
     		then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
@@ -153,7 +161,8 @@ do
 				done
     			echo "finished querying"
 
-				# echo "# File Size:" >> "${queryADIOSFile}"
+				echo "# File Size:" >> "${queryADIOSFile}"
+
 				# ls -lah $osServer >> "${queryFile}"
 				# ls -lah $kvServer >> "${queryFile}"
 				# ls -lah $dbServer >> "${queryFile}"
@@ -168,7 +177,7 @@ do
             # "/home/urz/kduwe/ht-output/"
     		echo "rm -rf ${inputOutput}"
             rm -rf ${inputOutput}
-    		# rm -rf /mnt/lustre/duwe/heat-bp4-4nodes.bp*
+    		# rm -rf /mnt/lustre/duwe/heat-bp4-2nodes.bp*
     
     		# echo "rm -rf ${analysisOutput}"
     		# rm -rf ${analysisOutput}
