@@ -15,13 +15,13 @@
 
 
 #### BP 271
-- 1 node:  596373
+- 1 node:  596376
     - BP3:
     - BP4:
-- 2 nodes: 596372
+- 2 nodes: 596375
     - BP3:
     - BP4:
-- 4 nodes: 596371
+- 4 nodes: 596374
     - BP3:
     - BP4:
 - 6 nodes: 
