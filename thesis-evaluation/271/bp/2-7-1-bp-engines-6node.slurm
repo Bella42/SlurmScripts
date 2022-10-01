@@ -29,7 +29,7 @@ steps=100
 
 htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_write_adios2"
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
-htQueryBin="/home/urz/kduwe/spack-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
+htQueryBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_queryAdios"
 
 # ---------------- Cluster Setup ----------------------------------------
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
