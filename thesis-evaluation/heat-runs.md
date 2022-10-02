@@ -24,7 +24,7 @@
 - 4 nodes: 596374
     - BP3:
     - BP4:
-- 6 nodes: 596388
+- 6 nodes: 596388 & 596392
     - BP3:
     - BP4:
 
@@ -34,17 +34,18 @@
 <!-- https://github.com/julea-io/adios2/commit/2c6b0aa13f1b36329746d607a816441b7521e4e5 -->
 
 ##### DB
-- 1 node:  
-- 2 nodes: 
-- 4 nodes: 
+- 1 node:  todo 596431
+- 2 nodes: todo 596411
+- 4 nodes: 596406
 - 6 nodes: 596383, 596386
 -> zweimal gemessen zum sichergehen
+5963869    -> nur 144 procs
 
 
 ##### KV
-- 1 node:  
-- 2 nodes: 
-- 4 nodes: 
+- 1 node:  todo 596430
+- 2 nodes: 596409
+- 4 nodes: 595768
 - 6 nodes: 596387
 
 
@@ -59,7 +60,7 @@
 ##### KV
 - 1 node:  596320
 - 2 nodes: 595902
-- 4 nodes: 595768
+<!-- - 4 nodes: 595768 -->
 - 6 nodes: 595903
 
 ##### DB
