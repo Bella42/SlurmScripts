@@ -24,7 +24,7 @@
 - 4 nodes: 596374
     - BP3:
     - BP4:
-- 6 nodes: 
+- 6 nodes: 596388
     - BP3:
     - BP4:
 
@@ -32,6 +32,21 @@
 #### 2 JULEA Servers on ant10/11
 <!-- neue ht messungen 271 -->
 <!-- https://github.com/julea-io/adios2/commit/2c6b0aa13f1b36329746d607a816441b7521e4e5 -->
+
+##### DB
+- 1 node:  
+- 2 nodes: 
+- 4 nodes: 
+- 6 nodes: 596383, 596386
+-> zweimal gemessen zum sichergehen
+
+
+##### KV
+- 1 node:  
+- 2 nodes: 
+- 4 nodes: 
+- 6 nodes: 596387
+
 
 
 
