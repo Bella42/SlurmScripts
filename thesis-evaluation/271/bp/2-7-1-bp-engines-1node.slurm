@@ -115,8 +115,8 @@ do
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ];
-    		then
+			# if [ "${proc}" == 24 ];
+    		# then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryFile}"
     			echo "# MPI_Comm_size: 1" >> "${queryFile}"
@@ -139,7 +139,7 @@ do
 				else 
 					ls -lah $inputOutput >> "${queryFile}"
 				fi
-			fi
+			# fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------
             # "/home/urz/kduwe/ht-output/"

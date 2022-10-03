@@ -114,8 +114,8 @@ do
 			# ls -lah $dbServer >> "${readFile}"
 
             # ---------------------------------------- Query DAI ----------------------------------------
-			if [ "${proc}" == 24 ];
-    		then
+			# if [ "${proc}" == 24 ];
+    		# then
 
     			echo "# --- QueryDAI time in mikroseconds ---" >> "${queryDAIFile}"
     			echo "# MPI_Comm_size: 1" >> "${queryDAIFile}"
@@ -135,12 +135,12 @@ do
 				# ls -lah $kvServer >> "${queryFile}"
 				# ls -lah $dbServer >> "${queryFile}"
 
-			fi
+			# fi
 
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ];
-    		then
+			# if [ "${proc}" == 24 ];
+    		# then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
     			echo "# MPI_Comm_size: 1" >> "${queryADIOSFile}"
@@ -160,7 +160,7 @@ do
 				# ls -lah $kvServer >> "${queryFile}"
 				# ls -lah $dbServer >> "${queryFile}"
 
-			fi
+			# fi
 
 
     		# ---------------------------------------- Clean Up ----------------------------------------

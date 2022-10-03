@@ -124,8 +124,8 @@ do
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ];
-    		then
+			# if [ "${proc}" == 24 ];
+    		# then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryADIOSFile}"
     			echo "# MPI_Comm_size: 1" >> "${queryADIOSFile}"
@@ -145,7 +145,7 @@ do
 				# ls -lah $kvServer >> "${queryFile}"
 				# ls -lah $dbServer >> "${queryFile}"
 
-			fi
+			# fi
 
 
     		# ---------------------------------------- Clean Up ----------------------------------------
