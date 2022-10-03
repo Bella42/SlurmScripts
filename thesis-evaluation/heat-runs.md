@@ -5,19 +5,19 @@
 
 #### BP 283
 - 1 node: 588407 (all)
-    + 1 node query for every process config: todo 596444
+    + 1 node query for every process config: TODO: 596459
 - 2 nodes: 588406 (all)
 - 4 nodes:
     - BP3: 588383
     - BP4: 588382
     - BP5: 588381
-- 6 nodes:
+- 6 nodes: TODO: 596450
 - 8 nodes: 588408 (all)
 
 
 #### BP 271
 - 1 node:  596376
-    + 1 node query for every process config: todo 596441
+    + 1 node query for every process config: TODO: 596456
     - BP3:
     - BP4:
 - 2 nodes: 596375
@@ -36,8 +36,57 @@
 <!-- https://github.com/julea-io/adios2/commit/2c6b0aa13f1b36329746d607a816441b7521e4e5 -->
 
 ##### DB
+- 1 node:  
+    + 1 node query for every process config: TODO: 
+- 2 nodes: TODO: 596462
+- 4 nodes: TODO: 596460
+- 6 nodes: TODO: 596455
+
+
+##### KV
+- 1 node:  
+    + 1 node query for every process config: todo 
+- 2 nodes: TODO: 596461
+- 4 nodes: TODO: 596458
+- 6 nodes: TODO: 596457
+
+
+### ----------------- FALSCHE CONFIG auf ant10--------------
+kduwe@ant10 ~ $ cat .config/julea/julea 
+[core]
+max-operation-size=0
+max-inject-size=0
+port=0
+
+[clients]
+max-connections=0
+stripe-size=0
+
+[servers]
+object=ant10;
+kv=ant10;
+db=ant10;
+
+[object]
+backend=posix
+component=server
+path=/tmp/julea-2567/posix
+
+[kv]
+backend=leveldb
+component=server
+path=/tmp/julea-2567/leveldb
+
+[db]
+backend=sqlite
+component=server
+path=/tmp/julea-2567/sqlite-db
+
+
+
+##### DB
 - 1 node:  596431
-    + 1 node query for every process config: todo 596442
+    + 1 node query for every process config: todo 596454
 - 2 nodes: 596411
 - 4 nodes: 596406
 - 6 nodes: 596383, 596386
@@ -47,10 +96,15 @@
 
 ##### KV
 - 1 node:  596430
-    + 1 node query for every process config: todo 596443
+    + 1 node query for every process config: todo 596452
 - 2 nodes: 596409
 - 4 nodes: 595768
 - 6 nodes: 596387
+
+
+
+
+
 
 
 
@@ -64,7 +118,7 @@
 ##### KV
 - 1 node:  596320
 - 2 nodes: 595902
-- 4 nodes: todo 596440
+- 4 nodes: 596440
 <!-- - 4 nodes: 595768 -->
 - 6 nodes: 595903
 
