@@ -38,17 +38,17 @@
 ##### DB
 - 1 node:  
     + 1 node query for every process config: TODO: 
-- 2 nodes: TODO: 596462
-- 4 nodes: TODO: 596460
-- 6 nodes: TODO: 596455
+- 2 nodes: TODO: 
+- 4 nodes: TODO: 
+- 6 nodes: TODO: 596469
 
 
 ##### KV
 - 1 node:  
-    + 1 node query for every process config: todo 
-- 2 nodes: TODO: 596461
-- 4 nodes: TODO: 596458
-- 6 nodes: TODO: 596457
+    + 1 node query for every process config: TODO: 
+- 2 nodes: TODO: 
+- 4 nodes: TODO: 
+- 6 nodes: TODO: 596468
 
 
 ### ----------------- FALSCHE CONFIG auf ant10--------------
