@@ -34,8 +34,8 @@
 <!-- https://github.com/julea-io/adios2/commit/2c6b0aa13f1b36329746d607a816441b7521e4e5 -->
 
 ##### DB
-- 1 node:  todo 596431
-- 2 nodes: todo 596411
+- 1 node:  596431
+- 2 nodes: 596411
 - 4 nodes: 596406
 - 6 nodes: 596383, 596386
 -> zweimal gemessen zum sichergehen
@@ -43,7 +43,7 @@
 
 
 ##### KV
-- 1 node:  todo 596430
+- 1 node:  596430
 - 2 nodes: 596409
 - 4 nodes: 595768
 - 6 nodes: 596387
