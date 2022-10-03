@@ -9,7 +9,8 @@
 # processes="4 12 24 48 96 192"
 # processes="4 12 24 48 96"
 processes="1 3 6 12 24"
-sizes="1024 2048 4096"
+sizes="1024"
+# sizes="1024 2048 4096"
 
 engines="bp3 bp4 bp5"
 
@@ -118,8 +119,8 @@ do
     
     		# ---------------------------------------- Query ADIOS ----------------------------------------
 
-			if [ "${proc}" == 24 ] && [ "${size}" == 4096 ];
-    		then
+			# if [ "${proc}" == 24 ] && [ "${size}" == 4096 ];
+    		# then
 
     			echo "# --- QueryAdios time in mikroseconds ---" >> "${queryFile}"
     			echo "# MPI_Comm_size: 1" >> "${queryFile}"
@@ -142,7 +143,7 @@ do
 				else 
 					ls -lah $inputOutput >> "${queryFile}"
 				fi
-			fi
+			# fi
 
     		# ---------------------------------------- Clean Up ----------------------------------------
             # "/home/urz/kduwe/ht-output/"

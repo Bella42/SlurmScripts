@@ -16,6 +16,7 @@
 
 #### BP 271
 - 1 node:  596376
+    + 1 node query for every process config: 
     - BP3:
     - BP4:
 - 2 nodes: 596375
@@ -35,6 +36,7 @@
 
 ##### DB
 - 1 node:  596431
+    + 1 node query for every process config: 
 - 2 nodes: 596411
 - 4 nodes: 596406
 - 6 nodes: 596383, 596386
@@ -44,6 +46,7 @@
 
 ##### KV
 - 1 node:  596430
+    + 1 node query for every process config: 
 - 2 nodes: 596409
 - 4 nodes: 595768
 - 6 nodes: 596387
