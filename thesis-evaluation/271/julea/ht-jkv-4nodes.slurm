@@ -40,10 +40,10 @@ export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
 # export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant10-kv-leveldb"
 # echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant10-kv-leveldb"
-# export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant11-db-mysql"
-export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant11-db-mysql-first-round-of-ht-measurements"
-# echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant11-db-mysql"
-echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant11-db-mysql-first-round-of-ht-measurements"
+export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant11-db-mysql"
+# export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant11-db-mysql-first-round-of-ht-measurements"
+echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant11-db-mysql"
+# echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant11-db-mysql-first-round-of-ht-measurements"
 
 # ------- Start Benchmark ---------------
 for engine in $engines
