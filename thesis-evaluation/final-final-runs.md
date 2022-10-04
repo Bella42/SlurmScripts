@@ -11,7 +11,7 @@
     - BP3: 588383
     - BP4: 588382
     - BP5: 588381
-- 6 nodes: TODO: 596540   
+- 6 nodes: TODO:
 - 8 nodes: 588408 (all)
 
 <!-- error for 6 nodes: -->
