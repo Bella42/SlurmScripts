@@ -27,7 +27,7 @@
 - 2 nodes: 
     - BP3:
     - BP4:
-- 4 nodes: TODO: 596547
+- 4 nodes: TODO: 596578
     - BP3:
     - BP4:
 - 6 nodes: TODO: 596545
@@ -45,13 +45,13 @@
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: TODO: 596548
-- 6 nodes: TODO: 596543
+- 4 nodes: TODO: 596577
+- 6 nodes: 596543 -> letzter query fehlt, weil node failure
 
 
 ##### KV
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: TODO: 596546
-- 6 nodes: TODO: 596544
+- 4 nodes: TODO: 596579
+- 6 nodes: TODO: 596576
