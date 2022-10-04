@@ -27,10 +27,10 @@
 - 2 nodes: 
     - BP3:
     - BP4:
-- 4 nodes: 
+- 4 nodes: TODO: 596547
     - BP3:
     - BP4:
-- 6 nodes: 
+- 6 nodes: TODO: 596545
     - BP3:
     - BP4:
 
@@ -45,7 +45,7 @@
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: 
+- 4 nodes: TODO: 596548
 - 6 nodes: TODO: 596543
 
 
@@ -53,5 +53,5 @@
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: 
+- 4 nodes: TODO: 596546
 - 6 nodes: TODO: 596544
