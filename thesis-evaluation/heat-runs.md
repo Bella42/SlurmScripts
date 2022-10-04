@@ -11,13 +11,17 @@
     - BP3: 588383
     - BP4: 588382
     - BP5: 588381
-- 6 nodes: TODO: 596450
+- 6 nodes: TODO: 596540   
 - 8 nodes: 588408 (all)
+
+<!-- error for 6 nodes: -->
+<!-- 6 nodes: line 64: 20060 Floating point exception(core dumped) mpirun -n $proc -ppn $(($proc/8)) $htWriteBin $configFile $inputOutput ${N[$i]} ${M[$i]} $size $size $steps $iterations >> "${writeFile}" -->
+<!-- ls: cannot access '/home/urz/kduwe/ht-output/heat-bp3-2nodes.bp': No such file or directory -->
 
 
 #### BP 271
 - 1 node:  596376
-    + 1 node query for every process config: TODO: 596456
+    + 1 node query for every process config: 596538
     - BP3:
     - BP4:
 - 2 nodes: 596375
@@ -37,17 +41,17 @@
 
 ##### DB
 - 1 node:  
-    + 1 node query for every process config: TODO: 
-- 2 nodes: TODO: 596473
-- 4 nodes: TODO: 596471
-- 6 nodes: TODO: 596469
+    + 1 node query for every process config: 596539
+- 2 nodes: 596477
+- 4 nodes: 596471
+- 6 nodes: 596469
 
 
 ##### KV
 - 1 node:  
-    + 1 node query for every process config: TODO: 
-- 2 nodes: TODO: 596472
-- 4 nodes: TODO: 596470
+    + 1 node query for every process config: 596537
+- 2 nodes: 596476
+- 4 nodes: 596475
 - 6 nodes: 596468
 
 
