@@ -46,7 +46,7 @@
     + 1 node query for every process config: 
 - 2 nodes: 
 - 4 nodes: 
-- 6 nodes: 
+- 6 nodes: TODO: 596543
 
 
 ##### KV
@@ -54,4 +54,4 @@
     + 1 node query for every process config: 
 - 2 nodes: 
 - 4 nodes: 
-- 6 nodes: 
+- 6 nodes: TODO: 596544
