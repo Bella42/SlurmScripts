@@ -37,8 +37,10 @@ sleep 5m
 export JULEA_PREFIX="/home/urz/kduwe/julea-install"
 
 # export JULEA_CONFIG="/home/urz/kduwe/.config/julea/test-1-server"
-export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant12-db-mysql"
-echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant12-db-mysql"
+# export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant12-db-mysql"
+export JULEA_CONFIG="/home/urz/kduwe/.config/julea/ant11-db-mysql"
+# echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant12-db-mysql"
+echo "Exported JULEA config: /home/urz/kduwe/.config/julea/ant11-db-mysql"
 
 # ------- Start Benchmark ---------------
 for engine in $engines

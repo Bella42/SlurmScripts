@@ -11,7 +11,7 @@
     - BP3: 588383
     - BP4: 588382
     - BP5: 588381
-- 6 nodes: TODO:
+- 6 nodes: 596735
 - 8 nodes: 588408 (all)
 
 <!-- error for 6 nodes: -->
@@ -45,7 +45,7 @@
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: TODO: 596726
+- 4 nodes: TODO: 
 - 6 nodes: 596543 -> letzter query fehlt, weil node failure
 596634
 
@@ -54,5 +54,5 @@
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: TODO: 596730
+- 4 nodes: TODO: 
 - 6 nodes: TODO: 
