@@ -54,5 +54,5 @@
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: TODO: 
+- 4 nodes: TODO: 596730
 - 6 nodes: TODO: 
