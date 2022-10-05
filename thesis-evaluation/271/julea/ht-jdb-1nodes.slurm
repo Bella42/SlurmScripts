@@ -66,7 +66,7 @@ do
     for proc in $processes
     do
     	# Will be deleted at the end!
-	    inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-${proc}-2node.bp"
+	    inputOutput="/home/urz/kduwe/ht-output/heat-${engine}-${proc}-1node.bp"
 	    analysisOutput="/home/urz/kduwe/ht-output/heat-${engine}-${proc}-analysis-output.bp"
     	for size in $sizes
     	do

@@ -5,7 +5,7 @@
 
 #### BP 283
 - 1 node: 588407 (all)
-    + 1 node query for every process config: TODO: 596459
+    + 1 node query for every process config: TODO: 
 - 2 nodes: 588406 (all)
 - 4 nodes:
     - BP3: 588383
@@ -24,13 +24,13 @@
     + 1 node query for every process config: 
     - BP3:
     - BP4:
-- 2 nodes: 
+- 2 nodes: TODO: 596728
     - BP3:
     - BP4:
-- 4 nodes: TODO: 596578
+- 4 nodes: 596637
     - BP3:
     - BP4:
-- 6 nodes: TODO: 596545
+- 6 nodes: 596545
     - BP3:
     - BP4:
 
@@ -45,13 +45,14 @@
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: TODO: 596577
+- 4 nodes: TODO: 596726
 - 6 nodes: 596543 -> letzter query fehlt, weil node failure
+596634
 
 
 ##### KV
 - 1 node:  
     + 1 node query for every process config: 
 - 2 nodes: 
-- 4 nodes: TODO: 596579
-- 6 nodes: TODO: 596576
+- 4 nodes: TODO: 
+- 6 nodes: TODO: 

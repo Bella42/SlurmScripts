@@ -74,7 +74,7 @@ do
     	for size in $sizes
     	do
             # ----------------------------- Make sure DB is emptied ----------------------------------------
-            mysql -h ant11 -u julea_user --password=julea_pw julea_db -e "drop table adios2_Thesis_eval_ColderThanMinus12; drop table adios2_Thesis_eval_block-metadata; drop table adios2_Thesis_eval_climate-indices; drop table adios2_Thesis_eval_config_precompute; drop table adios2_Thesis_eval_config_tags; drop table adios2_Thesis_eval_daily-global-statistics; drop table adios2_Thesis_eval_variable-metadata; drop table schema_structure;"
+            # mysql -h ant11 -u julea_user --password=julea_pw julea_db -e "drop table adios2_Thesis_eval_ColderThanMinus12; drop table adios2_Thesis_eval_block-metadata; drop table adios2_Thesis_eval_climate-indices; drop table adios2_Thesis_eval_config_precompute; drop table adios2_Thesis_eval_config_tags; drop table adios2_Thesis_eval_daily-global-statistics; drop table adios2_Thesis_eval_variable-metadata; drop table schema_structure;"
 
     		# ---------------------------------------- Writing ----------------------------------------
     		echo "# i = $i, N = ${N[$i]}, M = ${M[$i]}"
