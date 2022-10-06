@@ -14,7 +14,7 @@ iterations=10
 steps=100
 # steps=100
 
-numberNodes=4
+numberNodes=2
 
 htWriteBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_write_adios2"
 htReadBin="/home/urz/kduwe/julea-adios2/build/bin/thesis_eval_heatTransfer_read"
