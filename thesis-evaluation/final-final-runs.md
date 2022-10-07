@@ -43,7 +43,7 @@
 
 ##### DB
 - 1 node:  
-    + 1 node query for every process config: 
+    + 1 node query for every process config: 596883
 - 2 nodes: 596857
 - 4 nodes: 596833
 - 6 nodes: 596543 -> letzter query fehlt, weil node failure
@@ -52,7 +52,7 @@
 
 ##### KV
 - 1 node:  
-    + 1 node query for every process config: 
-- 2 nodes: TODO: 596876
+    + 1 node query for every process config: 596885
+- 2 nodes: 596877
 - 4 nodes: 596837
-- 6 nodes: TODO: 596848
+- 6 nodes: 596886
